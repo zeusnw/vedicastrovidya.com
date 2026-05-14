@@ -1,0 +1,2587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Cloudflare Turnstile -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<title>Vedic Astro Vidya — Ancient Wisdom. Precise Guidance.</title>
+<meta name="description" content="Professional Vedic astrology consultations and Janma Kundali readings by Nitin Wadekar. Birth chart analysis, planetary guidance and life path readings rooted in authentic Jyotish tradition.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Noto+Serif+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black:    #04030a;
+  --deep:     #080614;
+  --card:     #0d0b1a;
+  --border:   rgba(139,92,246,0.15);
+  --border-bright: rgba(139,92,246,0.35);
+  --white:    #f0ecff;
+  --muted:    #8b849e;
+  --purple:   #7c3aed;
+  --violet:   #a855f7;
+  --gold:     #f59e0b;
+  --gold-dim: rgba(245,158,11,0.1);
+  --gold-bright: #fbbf24;
+  --rose:     #e879f9;
+  --accent:   #a855f7;
+  --accent-dim: rgba(168,85,247,0.1);
+  --serif:    'Cormorant Garamond', Georgia, serif;
+  --sans:     'DM Sans', sans-serif;
+  --deva:     'Noto Serif Devanagari', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Star field background */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 25%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 45%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 15% 80%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 90%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 85%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(2px 2px at 45% 50%, rgba(168,85,247,0.3) 0%, transparent 100%),
+    radial-gradient(2px 2px at 75% 30%, rgba(245,158,11,0.2) 0%, transparent 100%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background: rgba(4,3,10,0.85);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+}
+
+.nav-logo {
+  display: flex; flex-direction: column;
+}
+.nav-logo-sanskrit {
+  font-family: var(--deva);
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.nav-logo-text {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.nav-logo-text span { color: var(--gold); }
+
+.nav-links {
+  display: flex; gap: 2.5rem; list-style: none;
+}
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--purple), var(--violet));
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  border: none; cursor: pointer;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px;
+}
+.nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: 0.3s; }
+
+.mobile-menu {
+  display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(4,3,10,0.98); z-index: 99; flex-direction: column;
+  align-items: center; justify-content: center; gap: 2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--serif); font-size: 1.8rem; color: var(--white);
+  text-decoration: none; transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-close {
+  position: absolute; top: 1.5rem; right: 2rem;
+  background: none; border: none; color: var(--muted);
+  font-size: 1.5rem; cursor: pointer;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 10rem 4rem 6rem 4rem;
+  position: relative; z-index: 1;
+}
+
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-family: var(--sans); font-size: 0.72rem;
+  color: var(--gold); letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.hero-eyebrow::before {
+  content: ''; display: block;
+  width: 24px; height: 1px; background: var(--gold);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 300;
+  line-height: 1.08;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 44ch;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.hero-shloka {
+  font-family: var(--deva);
+  font-size: 0.85rem;
+  color: rgba(168,85,247,0.6);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.05em;
+}
+.hero-shloka-trans {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--purple), var(--violet));
+  color: #fff; font-family: var(--sans); font-size: 0.82rem;
+  font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.85rem 2rem; border-radius: 4px; text-decoration: none;
+  border: none; cursor: pointer; transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-secondary {
+  border: 1px solid var(--border-bright); color: var(--violet);
+  font-family: var(--sans); font-size: 0.82rem; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.85rem 2rem; border-radius: 4px; text-decoration: none;
+  background: transparent; cursor: pointer; transition: all 0.2s;
+}
+.btn-secondary:hover { background: var(--accent-dim); color: var(--white); }
+
+.hero-right {
+  position: relative; display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+
+/* Cosmic mandala SVG */
+.hero-mandala {
+  width: 85%; height: 85%;
+  position: absolute;
+  animation: slowRotate 60s linear infinite;
+  opacity: 0.12;
+}
+@keyframes slowRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.hero-chart {
+  position: relative; z-index: 1;
+  width: 340px; height: 340px;
+}
+
+/* Stats bar */
+.hero-stats {
+  position: absolute; bottom: 3rem; left: 4rem; right: 4rem;
+  display: grid; grid-template-columns: repeat(4,1fr);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(13,11,26,0.8);
+  backdrop-filter: blur(12px);
+  overflow: hidden; z-index: 2;
+}
+.hero-stat {
+  padding: 1.25rem 1.5rem;
+  border-right: 1px solid var(--border);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-num {
+  font-family: var(--serif); font-size: 2rem; font-weight: 300;
+  color: var(--gold); line-height: 1; margin-bottom: 0.3rem;
+}
+.hero-stat-label {
+  font-family: var(--sans); font-size: 0.7rem;
+  color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+/* ── SECTIONS ── */
+section {
+  padding: 7rem 4rem;
+  position: relative;
+}
+
+.section-label {
+  font-family: var(--sans); font-size: 0.68rem;
+  color: var(--gold); letter-spacing: 0.25em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.section-label::before {
+  content: ''; display: block;
+  width: 20px; height: 1px; background: var(--gold);
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 300; line-height: 1.1;
+  color: var(--white); margin-bottom: 1.25rem;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+.section-desc {
+  font-size: 1rem; color: var(--muted);
+  line-height: 1.8; max-width: 52ch; font-weight: 300;
+}
+
+/* ── ABOUT ── */
+#about {
+  background: var(--deep);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6rem; align-items: center;
+}
+.about-visual {
+  position: relative;
+}
+.about-chart-wrap {
+  width: 100%; aspect-ratio: 1;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.about-chart-label {
+  position: absolute;
+  font-family: var(--sans); font-size: 0.65rem;
+  color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase;
+  top: 1.25rem; left: 1.25rem;
+}
+.about-badge {
+  position: absolute; bottom: -1.5rem; right: -1.5rem;
+  background: linear-gradient(135deg, var(--purple), var(--violet));
+  border-radius: 8px; padding: 1.25rem 1.5rem; text-align: center;
+  border: 1px solid rgba(168,85,247,0.3);
+}
+.about-badge-num {
+  font-family: var(--serif); font-size: 2.5rem; font-weight: 300;
+  color: #fff; line-height: 1; display: block;
+}
+.about-badge-label {
+  font-family: var(--sans); font-size: 0.62rem;
+  color: rgba(255,255,255,0.7); letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+.about-content { padding-bottom: 2rem; }
+.about-pillars {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 6px;
+  overflow: hidden; margin-top: 2rem;
+}
+.about-pillar {
+  background: var(--card); padding: 1.25rem;
+}
+.about-pillar-sanskrit {
+  font-family: var(--deva); font-size: 1rem; color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.about-pillar-title {
+  font-family: var(--serif); font-size: 1rem; font-weight: 600;
+  color: var(--white); margin-bottom: 0.4rem;
+}
+.about-pillar-desc {
+  font-size: 0.78rem; color: var(--muted); line-height: 1.6; font-weight: 300;
+}
+
+/* ── SERVICES ── */
+#services { background: var(--black); }
+
+.services-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+  margin-top: 3rem;
+}
+.service-card {
+  background: var(--card); padding: 2rem;
+  transition: background 0.3s;
+  cursor: default;
+}
+.service-card:hover { background: rgba(13,11,26,0.95); }
+.service-num {
+  font-family: var(--sans); font-size: 0.65rem;
+  color: var(--purple); letter-spacing: 0.15em; opacity: 0.5;
+  display: block; margin-bottom: 1rem;
+}
+.service-icon {
+  font-size: 1.75rem; margin-bottom: 1rem; display: block;
+}
+.service-card h3 {
+  font-family: var(--serif); font-size: 1.3rem; font-weight: 500;
+  color: var(--white); margin-bottom: 0.6rem;
+}
+.service-card p {
+  font-size: 0.82rem; color: var(--muted); line-height: 1.7; font-weight: 300;
+}
+.service-scripture {
+  font-family: var(--deva); font-size: 0.72rem;
+  color: rgba(168,85,247,0.5); margin-top: 1rem; line-height: 1.5;
+}
+.service-scripture-trans {
+  font-family: var(--serif); font-style: italic;
+  font-size: 0.68rem; color: rgba(255,255,255,0.2);
+  margin-top: 0.2rem;
+}
+
+/* ── PLANETS ── */
+#planets {
+  background: var(--deep);
+  border-top: 1px solid var(--border);
+}
+.planets-intro {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem;
+}
+.planets-grid {
+  display: grid; grid-template-columns: repeat(9,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+}
+.planet-card {
+  background: var(--card); padding: 1.25rem 1rem;
+  text-align: center; transition: background 0.3s;
+  cursor: default;
+}
+.planet-card:hover { background: rgba(168,85,247,0.08); }
+.planet-symbol {
+  font-size: 1.4rem; display: block; margin-bottom: 0.5rem;
+}
+.planet-name-skt {
+  font-family: var(--deva); font-size: 0.7rem;
+  color: var(--gold); display: block; margin-bottom: 0.2rem;
+}
+.planet-name-eng {
+  font-family: var(--serif); font-size: 0.82rem; font-weight: 600;
+  color: var(--white); display: block; margin-bottom: 0.25rem;
+}
+.planet-governs {
+  font-family: var(--sans); font-size: 0.6rem;
+  color: var(--muted); line-height: 1.4;
+}
+
+/* ── PROCESS ── */
+#process { background: var(--black); }
+.process-steps {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 8px;
+  overflow: hidden; margin-top: 3rem;
+}
+.process-step {
+  background: var(--card); padding: 2rem;
+}
+.step-num {
+  font-family: var(--sans); font-size: 0.65rem;
+  color: var(--purple); letter-spacing: 0.15em; opacity: 0.5;
+  display: block; margin-bottom: 0.75rem;
+}
+.step-icon { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
+.process-step h3 {
+  font-family: var(--serif); font-size: 1.1rem; font-weight: 500;
+  color: var(--white); margin-bottom: 0.5rem;
+}
+.process-step p {
+  font-size: 0.78rem; color: var(--muted); line-height: 1.65; font-weight: 300;
+}
+
+/* ── PACKAGES ── */
+#packages {
+  background: var(--deep);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.packages-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+.pkg-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 2rem;
+  transition: border-color 0.3s;
+}
+.pkg-card:hover { border-color: var(--border-bright); }
+.pkg-card.featured {
+  border-color: rgba(168,85,247,0.4);
+  background: rgba(13,11,26,0.95);
+  position: relative;
+}
+.pkg-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--purple), var(--violet));
+  color: #fff; font-family: var(--sans); font-size: 0.6rem;
+  font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 3px 14px; border-radius: 20px; white-space: nowrap;
+}
+.pkg-name-skt {
+  font-family: var(--deva); font-size: 1.1rem;
+  color: var(--gold); margin-bottom: 0.25rem;
+}
+.pkg-name {
+  font-family: var(--serif); font-size: 1.3rem; font-weight: 500;
+  color: var(--white); margin-bottom: 0.25rem;
+}
+.pkg-tagline {
+  font-family: var(--sans); font-size: 0.72rem;
+  color: var(--muted); margin-bottom: 1.5rem;
+}
+.pkg-price {
+  font-family: var(--serif); font-size: 2.8rem; font-weight: 300;
+  color: var(--gold); line-height: 1; margin-bottom: 0.25rem;
+}
+.pkg-duration {
+  font-family: var(--sans); font-size: 0.7rem;
+  color: var(--muted); margin-bottom: 1.5rem;
+}
+.pkg-divider {
+  height: 1px; background: var(--border); margin-bottom: 1.5rem;
+}
+.pkg-features {
+  list-style: none; display: flex; flex-direction: column; gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+.pkg-features li {
+  font-size: 0.8rem; color: var(--muted); font-weight: 300;
+  display: flex; gap: 0.6rem; align-items: flex-start;
+}
+.pkg-features li::before { content: '✦'; color: var(--purple); font-size: 0.6rem; margin-top: 3px; flex-shrink: 0; }
+.pkg-btn {
+  display: block; text-align: center; text-decoration: none;
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.8rem; border-radius: 4px; transition: all 0.2s;
+}
+.pkg-btn-outline {
+  border: 1px solid var(--border-bright); color: var(--violet);
+}
+.pkg-btn-outline:hover { background: var(--accent-dim); color: var(--white); }
+.pkg-btn-filled {
+  background: linear-gradient(135deg, var(--purple), var(--violet)); color: #fff;
+}
+.pkg-btn-filled:hover { opacity: 0.85; }
+
+/* ── TESTIMONIALS ── */
+#testimonials { background: var(--black); }
+.testi-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+.testi-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1.75rem;
+}
+.testi-stars { color: var(--gold); font-size: 0.75rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+.testi-text {
+  font-family: var(--serif); font-size: 1rem; font-style: italic;
+  font-weight: 300; color: rgba(255,255,255,0.8); line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+.testi-author {
+  font-family: var(--sans); font-size: 0.75rem; color: var(--muted);
+  font-weight: 400; letter-spacing: 0.04em;
+}
+
+/* ── CONTACT ── */
+#contact {
+  background: var(--deep);
+  border-top: 1px solid var(--border);
+}
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: 6rem;
+}
+.contact-info-item {
+  display: flex; gap: 1rem; align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+.contact-icon {
+  width: 40px; height: 40px; border-radius: 6px;
+  background: var(--accent-dim); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.contact-info-label {
+  font-family: var(--sans); font-size: 0.65rem;
+  color: var(--muted); letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 0.2rem;
+}
+.contact-info-val {
+  font-family: var(--serif); font-size: 1rem;
+  color: var(--white); font-weight: 400;
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-label {
+  font-family: var(--sans); font-size: 0.68rem;
+  color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+}
+.form-input, .form-select, .form-textarea {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 4px; color: var(--white);
+  font-family: var(--sans); font-size: 0.88rem; font-weight: 300;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s;
+  width: 100%; outline: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--border-bright);
+}
+.form-select { cursor: pointer; }
+.form-select option { background: var(--card); }
+.form-textarea { resize: vertical; min-height: 120px; }
+.form-submit {
+  background: linear-gradient(135deg, var(--purple), var(--violet));
+  color: #fff; font-family: var(--sans); font-size: 0.82rem;
+  font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.9rem; border-radius: 4px; border: none; cursor: pointer;
+  transition: opacity 0.2s;
+}
+.form-submit:hover { opacity: 0.85; }
+.form-gdpr {
+  font-size: 0.7rem; color: var(--muted); line-height: 1.6;
+  padding: 0.75rem; border: 1px solid var(--border);
+  border-radius: 4px; background: rgba(168,85,247,0.03);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  padding: 3rem 4rem 2rem;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 4rem; margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.footer-brand-desc {
+  font-size: 0.82rem; color: var(--muted);
+  line-height: 1.8; font-weight: 300; margin-top: 1rem; max-width: 38ch;
+}
+.footer-heading {
+  font-family: var(--sans); font-size: 0.68rem;
+  color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.footer-links {
+  list-style: none; display: flex; flex-direction: column; gap: 0.6rem;
+}
+.footer-links a {
+  font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 0.75rem;
+}
+.footer-copy {
+  font-family: var(--sans); font-size: 0.72rem; color: var(--muted);
+}
+.footer-skt {
+  font-family: var(--deva); font-size: 0.8rem; color: rgba(168,85,247,0.4);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .planets-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 7rem 1.5rem 14rem; }
+  .hero-stats { left: 1rem; right: 1rem; bottom: 1.5rem; grid-template-columns: repeat(2,1fr); }
+  section { padding: 4rem 1.5rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .planets-grid { grid-template-columns: repeat(3,1fr); }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .packages-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2.4rem; }
+  .planets-grid { grid-template-columns: repeat(3,1fr); }
+  .process-steps { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: repeat(2,1fr); }
+  footer { padding: 2.5rem 1.25rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="nav-logo-sanskrit">ज्योतिष विद्या</span>
+    <span class="nav-logo-text">Vedic Astro <span>Vidya</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#houses">12 Houses</a></li>
+    <li><a href="#planets">Planets</a></li>
+    <li><a href="#kundali" style="color:var(--gold);">Free Chart</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#community">Community</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book a Reading</a>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#planets" onclick="toggleMenu()">Planets</a>
+  <a href="#packages" onclick="toggleMenu()">Packages</a>
+  <a href="#testimonials" onclick="toggleMenu()">Reviews</a>
+  <a href="#community" onclick="toggleMenu()">Community</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Ancient Jyotish Science</div>
+    <h1>Your Stars.<br>Your <em>Karma.</em><br>Your Path.</h1>
+    <p class="hero-desc">Professional Vedic astrology consultations rooted in authentic Jyotish tradition. Discover what your Janma Kundali reveals about your dharma, karma, relationships and life purpose.</p>
+    <div class="hero-shloka">ज्योतिषामयनं चक्षुः</div>
+    <div class="hero-shloka-trans">Jyotish is the eye of the Vedas — Vedanga Jyotisha</div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Book a Reading</a>
+      <a href="#services" class="btn-secondary">View Services</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <!-- Rotating mandala -->
+    <svg class="hero-mandala" viewBox="0 0 500 500" fill="none">
+      <circle cx="250" cy="250" r="240" stroke="#a855f7" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="200" stroke="#a855f7" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="160" stroke="#f59e0b" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="120" stroke="#a855f7" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="80" stroke="#a855f7" stroke-width="0.5"/>
+      <circle cx="250" cy="250" r="40" stroke="#f59e0b" stroke-width="1"/>
+      <line x1="250" y1="10" x2="250" y2="490" stroke="#a855f7" stroke-width="0.4"/>
+      <line x1="10" y1="250" x2="490" y2="250" stroke="#a855f7" stroke-width="0.4"/>
+      <line x1="80" y1="80" x2="420" y2="420" stroke="#a855f7" stroke-width="0.4"/>
+      <line x1="420" y1="80" x2="80" y2="420" stroke="#a855f7" stroke-width="0.4"/>
+      <line x1="10" y1="140" x2="490" y2="360" stroke="#a855f7" stroke-width="0.3"/>
+      <line x1="140" y1="10" x2="360" y2="490" stroke="#a855f7" stroke-width="0.3"/>
+      <line x1="490" y1="140" x2="10" y2="360" stroke="#a855f7" stroke-width="0.3"/>
+      <line x1="360" y1="10" x2="140" y2="490" stroke="#a855f7" stroke-width="0.3"/>
+      <polygon points="250,50 295,180 435,180 325,255 365,390 250,310 135,390 175,255 65,180 205,180" stroke="#f59e0b" stroke-width="0.6" fill="none"/>
+      <polygon points="250,140 275,210 355,210 295,252 318,328 250,282 182,328 205,252 145,210 225,210" stroke="#a855f7" stroke-width="0.5" fill="none"/>
+    </svg>
+
+    <!-- Kundali chart SVG -->
+    <svg class="hero-chart" viewBox="0 0 340 340" fill="none" id="hero-kundali">
+
+      <!-- Outer square with orange border -->
+      <rect x="10" y="10" width="320" height="320" stroke="rgba(245,158,11,0.5)" stroke-width="1.2" fill="rgba(13,11,26,0.5)"/>
+      <!-- Diamond — orange -->
+      <polygon points="170,10 330,170 170,330 10,170" stroke="rgba(245,158,11,0.6)" stroke-width="1.2" fill="none"/>
+      <!-- Diagonals — orange -->
+      <line x1="10" y1="10" x2="170" y2="170" stroke="rgba(245,158,11,0.35)" stroke-width="0.8"/>
+      <line x1="330" y1="10" x2="170" y2="170" stroke="rgba(245,158,11,0.35)" stroke-width="0.8"/>
+      <line x1="10" y1="330" x2="170" y2="170" stroke="rgba(245,158,11,0.35)" stroke-width="0.8"/>
+      <line x1="330" y1="330" x2="170" y2="170" stroke="rgba(245,158,11,0.35)" stroke-width="0.8"/>
+      <!-- Inner box lines -->
+      <line x1="90" y1="90" x2="250" y2="90" stroke="rgba(245,158,11,0.2)" stroke-width="0.5"/>
+      <line x1="250" y1="90" x2="250" y2="250" stroke="rgba(245,158,11,0.2)" stroke-width="0.5"/>
+      <line x1="250" y1="250" x2="90" y2="250" stroke="rgba(245,158,11,0.2)" stroke-width="0.5"/>
+      <line x1="90" y1="250" x2="90" y2="90" stroke="rgba(245,158,11,0.2)" stroke-width="0.5"/>
+
+      <!-- H1 Lagna top -->
+      <polygon points="170,10 330,10 170,170 10,10" fill="rgba(245,158,11,0.06)" stroke="none"/>
+      <text x="170" y="34" text-anchor="middle" fill="rgba(245,158,11,0.95)" font-size="9.5" font-weight="bold" font-family="DM Sans">H1 Lagna</text>
+      <text x="170" y="45" text-anchor="middle" fill="rgba(245,158,11,0.7)" font-size="7.5" font-family="DM Sans">Self . Body . Mars</text>
+
+      <!-- H2 top-right -->
+      <polygon points="330,10 330,170 170,170" fill="rgba(168,85,247,0.06)" stroke="none"/>
+      <text x="275" y="82" text-anchor="middle" fill="rgba(168,85,247,0.9)" font-size="8.5" font-weight="bold" font-family="DM Sans">H2</text>
+      <text x="275" y="93" text-anchor="middle" fill="rgba(168,85,247,0.6)" font-size="7" font-family="DM Sans">Wealth.Venus</text>
+
+      <!-- H3 right -->
+      <polygon points="330,170 330,330 170,170" fill="rgba(139,92,246,0.06)" stroke="none"/>
+      <text x="275" y="258" text-anchor="middle" fill="rgba(168,85,247,0.9)" font-size="8.5" font-weight="bold" font-family="DM Sans">H3</text>
+      <text x="275" y="269" text-anchor="middle" fill="rgba(168,85,247,0.6)" font-size="7" font-family="DM Sans">Courage.Merc</text>
+
+      <!-- H4 bottom -->
+      <polygon points="170,330 10,330 330,330 170,170" fill="rgba(59,130,246,0.06)" stroke="none"/>
+      <text x="170" y="304" text-anchor="middle" fill="rgba(100,170,255,0.9)" font-size="9.5" font-weight="bold" font-family="DM Sans">H4 Home</text>
+      <text x="170" y="315" text-anchor="middle" fill="rgba(100,170,255,0.6)" font-size="7.5" font-family="DM Sans">Mother . Moon</text>
+
+      <!-- H5 left-bottom -->
+      <polygon points="10,330 10,170 170,170" fill="rgba(232,121,249,0.06)" stroke="none"/>
+      <text x="65" y="258" text-anchor="middle" fill="rgba(232,121,249,0.9)" font-size="8.5" font-weight="bold" font-family="DM Sans">H5</text>
+      <text x="65" y="269" text-anchor="middle" fill="rgba(232,121,249,0.6)" font-size="7" font-family="DM Sans">Children.Sun</text>
+
+      <!-- H6 left-top -->
+      <polygon points="10,10 10,170 170,170" fill="rgba(239,68,68,0.06)" stroke="none"/>
+      <text x="65" y="82" text-anchor="middle" fill="rgba(239,68,68,0.9)" font-size="8.5" font-weight="bold" font-family="DM Sans">H6</text>
+      <text x="65" y="93" text-anchor="middle" fill="rgba(239,68,68,0.6)" font-size="7" font-family="DM Sans">Ripu.Mercury</text>
+
+      <!-- Inner diamond houses H7-H12 -->
+      <!-- H7 inner right -->
+      <polygon points="170,170 250,170 210,210" fill="rgba(245,158,11,0.06)" stroke="none"/>
+      <text x="218" y="183" text-anchor="middle" fill="rgba(245,158,11,0.8)" font-size="7.5" font-weight="bold" font-family="DM Sans">H7 Partner</text>
+
+      <!-- H8 inner bottom-right -->
+      <polygon points="170,170 210,210 170,250" fill="rgba(99,102,241,0.06)" stroke="none"/>
+      <text x="196" y="216" text-anchor="middle" fill="rgba(130,130,255,0.8)" font-size="7.5" font-weight="bold" font-family="DM Sans">H8</text>
+
+      <!-- H9 inner bottom-left -->
+      <polygon points="170,170 170,250 130,210" fill="rgba(245,158,11,0.06)" stroke="none"/>
+      <text x="144" y="216" text-anchor="middle" fill="rgba(245,158,11,0.8)" font-size="7.5" font-weight="bold" font-family="DM Sans">H9</text>
+
+      <!-- H10 inner left -->
+      <polygon points="170,170 130,210 90,170" fill="rgba(34,197,94,0.06)" stroke="none"/>
+      <text x="122" y="183" text-anchor="middle" fill="rgba(34,197,94,0.8)" font-size="7.5" font-weight="bold" font-family="DM Sans">H10 Career</text>
+
+      <!-- H11 inner top-left -->
+      <polygon points="170,170 130,130 170,90" fill="rgba(59,130,246,0.06)" stroke="none"/>
+      <text x="144" y="124" text-anchor="middle" fill="rgba(100,170,255,0.8)" font-size="7.5" font-weight="bold" font-family="DM Sans">H11</text>
+
+      <!-- H12 inner top-right -->
+      <polygon points="170,170 210,130 250,170" fill="rgba(168,85,247,0.06)" stroke="none"/>
+      <text x="218" y="145" text-anchor="middle" fill="rgba(168,85,247,0.8)" font-size="7.5" font-weight="bold" font-family="DM Sans">H12</text>
+
+      <!-- OM at centre -->
+      <text x="170" y="178" text-anchor="middle" fill="rgba(245,158,11,0.6)" font-size="14" font-family="DM Sans">OM</text>
+
+    </svg>
+  </div>
+
+  <!-- Stats -->
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">15+</div>
+      <div class="hero-stat-label">Years Study</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">500+</div>
+      <div class="hero-stat-label">Charts Read</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">9</div>
+      <div class="hero-stat-label">Vedic Planets</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">12</div>
+      <div class="hero-stat-label">Houses Analysed</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-chart-wrap">
+        <div class="about-chart-label">Janma Kundali · Birth Chart</div>
+        <svg width="280" height="280" viewBox="0 0 280 280" fill="none">
+          <rect x="5" y="5" width="270" height="270" stroke="rgba(168,85,247,0.3)" stroke-width="1" fill="rgba(13,11,26,0.4)"/>
+          <polygon points="140,5 275,140 140,275 5,140" stroke="rgba(245,158,11,0.35)" stroke-width="1" fill="rgba(168,85,247,0.03)"/>
+          <line x1="5" y1="5" x2="140" y2="140" stroke="rgba(168,85,247,0.15)" stroke-width="0.5"/>
+          <line x1="275" y1="5" x2="140" y2="140" stroke="rgba(168,85,247,0.15)" stroke-width="0.5"/>
+          <line x1="5" y1="275" x2="140" y2="140" stroke="rgba(168,85,247,0.15)" stroke-width="0.5"/>
+          <line x1="275" y1="275" x2="140" y2="140" stroke="rgba(168,85,247,0.15)" stroke-width="0.5"/>
+          <circle cx="140" cy="140" r="35" stroke="rgba(245,158,11,0.3)" stroke-width="1" fill="rgba(245,158,11,0.03)"/>
+          <circle cx="140" cy="140" r="18" stroke="rgba(168,85,247,0.3)" stroke-width="0.8" fill="rgba(168,85,247,0.05)"/>
+          <text x="140" y="148" text-anchor="middle" fill="rgba(245,158,11,0.7)" font-size="20" font-family="Noto Serif Devanagari">ॐ</text>
+          <!-- Zodiac signs around the chart -->
+          <text x="140" y="30" text-anchor="middle" fill="rgba(168,85,247,0.5)" font-size="10" font-family="DM Sans">♈ Aries</text>
+          <text x="248" y="80" text-anchor="end" fill="rgba(168,85,247,0.5)" font-size="10" font-family="DM Sans">♉ Taurus</text>
+          <text x="260" y="148" text-anchor="end" fill="rgba(168,85,247,0.5)" font-size="10" font-family="DM Sans">♊ Gemini</text>
+          <text x="248" y="218" text-anchor="end" fill="rgba(168,85,247,0.5)" font-size="10" font-family="DM Sans">♋ Cancer</text>
+          <text x="140" y="262" text-anchor="middle" fill="rgba(168,85,247,0.5)" font-size="10" font-family="DM Sans">♌ Leo</text>
+          <text x="32" y="218" text-anchor="start" fill="rgba(168,85,247,0.5)" font-size="10" font-family="DM Sans">♍ Virgo</text>
+          <text x="20" y="148" text-anchor="start" fill="rgba(168,85,247,0.5)" font-size="10" font-family="DM Sans">♎ Libra</text>
+          <text x="32" y="80" text-anchor="start" fill="rgba(168,85,247,0.5)" font-size="10" font-family="DM Sans">♏ Scorpio</text>
+        </svg>
+      </div>
+      <div class="about-badge">
+        <span class="about-badge-num">15</span>
+        <span class="about-badge-label">Years of Study</span>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="section-label">The Astrologer</div>
+      <h2 class="section-title">Rooted in <em>Authentic</em> Jyotish</h2>
+      <p class="section-desc" style="margin-bottom:1.5rem;">My journey into Vedic astrology began 15 years ago alongside my ShivYog sadhana — and over time I came to understand that Jyotish and ShivYog are two sides of the same divine coin.</p>
+      <p style="font-size:0.9rem; color:var(--muted); line-height:1.8; font-weight:300; margin-bottom:1.5rem;">Jyotish shows you the karmic map you brought into this lifetime — the strengths, the challenges, the planetary periods that govern your evolution. ShivYog gives you the tools to consciously navigate and transform those patterns. Together they offer a complete system for conscious living.</p>
+      <p style="font-size:0.9rem; color:var(--muted); line-height:1.8; font-weight:300;">Every reading I offer is grounded in the Brihat Parashara Hora Shastra — the foundational text of Vedic astrology — combined with decades of practical application across hundreds of charts.</p>
+      <div class="about-pillars">
+        <div class="about-pillar">
+          <div class="about-pillar-sanskrit">परशर</div>
+          <div class="about-pillar-title">Parashara Tradition</div>
+          <div class="about-pillar-desc">Readings grounded in the BPHS — the most authoritative text of classical Jyotish.</div>
+        </div>
+        <div class="about-pillar">
+          <div class="about-pillar-sanskrit">जयमिनी</div>
+          <div class="about-pillar-title">Jaimini Techniques</div>
+          <div class="about-pillar-desc">Advanced Jaimini sutras for career, soul purpose and life events timing.</div>
+        </div>
+        <div class="about-pillar">
+          <div class="about-pillar-sanskrit">दशा</div>
+          <div class="about-pillar-title">Dasha Analysis</div>
+          <div class="about-pillar-desc">Precise planetary period analysis — knowing WHEN events unfold, not just what.</div>
+        </div>
+        <div class="about-pillar">
+          <div class="about-pillar-sanskrit">नक्षत्र</div>
+          <div class="about-pillar-title">Nakshatra System</div>
+          <div class="about-pillar-desc">The 27 lunar mansions — the most precise layer of Vedic astrological analysis.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1.5rem;">
+    <div>
+      <div class="section-label">What I Offer</div>
+      <h2 class="section-title">Consultation <em>Services</em></h2>
+    </div>
+    <p class="section-desc" style="max-width:40ch;">Each reading is prepared with full chart calculation, dasha analysis and remedial recommendations.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-num">// 01</span>
+      <span class="service-icon">🔯</span>
+      <h3>Janma Kundali Reading</h3>
+      <p>A comprehensive analysis of your birth chart — all 12 houses, all 9 planets, your ascendant, dashas and yogas. The complete map of your karmic blueprint.</p>
+      <div class="service-scripture">यथा पिण्डे तथा ब्रह्माण्डे</div>
+      <div class="service-scripture-trans">As is the microcosm, so is the macrocosm</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">// 02</span>
+      <span class="service-icon">⏳</span>
+      <h3>Dasha & Transit Analysis</h3>
+      <p>Precise timing of life events through Vimshottari dasha and current planetary transits. Know when your key planetary periods activate and what they bring.</p>
+      <div class="service-scripture">कालः पचति भूतानि</div>
+      <div class="service-scripture-trans">Time ripens all beings — Mahabharata</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">// 03</span>
+      <span class="service-icon">🪐</span>
+      <h3>Career & Finance Chart</h3>
+      <p>Targeted analysis of the 2nd, 6th, 10th and 11th houses — wealth, career, profession and gains. Including Arudha Lagna and Dasamsha (D-10) divisional chart.</p>
+      <div class="service-scripture">अर्थ धर्म काम मोक्ष</div>
+      <div class="service-scripture-trans">The four aims of human life</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">// 04</span>
+      <span class="service-icon">💫</span>
+      <h3>Relationship Compatibility</h3>
+      <p>Synastry analysis of two birth charts — Ashtakoota matching, 7th house analysis, Venus and Mars compatibility and long-term partnership indicators.</p>
+      <div class="service-scripture">सप्तपदी</div>
+      <div class="service-scripture-trans">The seven sacred steps — union of souls</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">// 05</span>
+      <span class="service-icon">🌙</span>
+      <h3>Remedial Astrology</h3>
+      <p>Personalised remedies drawn from Jyotish tradition — mantras, gemstones, yantras and charitable acts — to strengthen benefic planets and mitigate malefic influences.</p>
+      <div class="service-scripture">उपाय</div>
+      <div class="service-scripture-trans">Remedial measures — transforming karma</div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">// 06</span>
+      <span class="service-icon">✨</span>
+      <h3>ShivYog & Jyotish Integration</h3>
+      <p>Unique to this practice — aligning your astrological chart with your ShivYog sadhana. Understanding which practices address your specific karmic patterns.</p>
+      <div class="service-scripture">शिव योग ज्योतिष</div>
+      <div class="service-scripture-trans">ShivYog and Jyotish — two sides of one coin</div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 HOUSES SECTION -->
+<section id="houses" style="background:var(--deep); border-top:1px solid var(--border); padding:7rem 4rem;">
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1.5rem; margin-bottom:3rem;">
+    <div>
+      <div class="section-label">Classical Jyotish</div>
+      <h2 class="section-title">The 12 <em>Bhavas</em></h2>
+      <p style="font-family:var(--deva); font-size:0.9rem; color:var(--gold); margin-top:0.5rem;">द्वादश भाव — Twelve Houses of Life</p>
+    </div>
+    <p class="section-desc" style="max-width:38ch;">Each house governs a specific area of life. The Rashi lord of each house changes based on your Lagna.</p>
+  </div>
+
+  <!-- Filter buttons -->
+  <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:2rem;" id="house-filters">
+    <button onclick="filterBhavas('all', this)" style="background:var(--purple); border:none; color:#fff; font-family:var(--sans); font-size:0.72rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1.25rem; border-radius:20px; cursor:pointer;">All 12</button>
+    <button onclick="filterBhavas('dharma', this)" style="background:transparent; border:1px solid rgba(245,158,11,0.4); color:var(--gold); font-family:var(--sans); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1.25rem; border-radius:20px; cursor:pointer;">Dharma 1,5,9</button>
+    <button onclick="filterBhavas('artha', this)" style="background:transparent; border:1px solid rgba(34,197,94,0.4); color:rgba(34,197,94,0.8); font-family:var(--sans); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1.25rem; border-radius:20px; cursor:pointer;">Artha 2,6,10</button>
+    <button onclick="filterBhavas('kama', this)" style="background:transparent; border:1px solid rgba(232,121,249,0.4); color:rgba(232,121,249,0.8); font-family:var(--sans); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1.25rem; border-radius:20px; cursor:pointer;">Kama 3,7,11</button>
+    <button onclick="filterBhavas('moksha', this)" style="background:transparent; border:1px solid rgba(139,92,246,0.4); color:var(--violet); font-family:var(--sans); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1.25rem; border-radius:20px; cursor:pointer;">Moksha 4,8,12</button>
+  </div>
+
+  <!-- Houses grid -->
+  <div id="bhavas-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.2); border-radius:8px; overflow:hidden;"></div>
+
+  <!-- Source note -->
+  <div style="text-align:center; margin-top:2rem;">
+    <p style="font-size:0.72rem; color:rgba(255,255,255,0.25); font-style:italic;">Source: Brihat Parashara Hora Shastra, Ch.11 — Maharishi Parashara. Lords shown are natural Karakas; actual house lords depend on your Lagna.</p>
+  </div>
+</section>
+
+<!-- PLANETS -->
+<section id="planets">
+  <div class="planets-intro">
+    <div>
+      <div class="section-label">Vedic Cosmology</div>
+      <h2 class="section-title">The Nine <em>Grahas</em></h2>
+    </div>
+    <p class="section-desc" style="max-width:36ch;">Each planet governs specific areas of life, karmic lessons and personality traits.</p>
+  </div>
+  <div class="planets-grid">
+    <div class="planet-card">
+      <span class="planet-symbol">☉</span>
+      <span class="planet-name-skt">सूर्य</span>
+      <span class="planet-name-eng">Surya — Sun</span>
+      <span class="planet-governs">Soul · Father · Authority · Vitality · Career</span>
+    </div>
+    <div class="planet-card">
+      <span class="planet-symbol">☾</span>
+      <span class="planet-name-skt">चन्द्र</span>
+      <span class="planet-name-eng">Chandra — Moon</span>
+      <span class="planet-governs">Mind · Mother · Emotions · Intuition · Comfort</span>
+    </div>
+    <div class="planet-card">
+      <span class="planet-symbol">♂</span>
+      <span class="planet-name-skt">मंगल</span>
+      <span class="planet-name-eng">Mangal — Mars</span>
+      <span class="planet-governs">Energy · Courage · Siblings · Property · Conflict</span>
+    </div>
+    <div class="planet-card">
+      <span class="planet-symbol">☿</span>
+      <span class="planet-name-skt">बुध</span>
+      <span class="planet-name-eng">Budha — Mercury</span>
+      <span class="planet-governs">Intelligence · Communication · Business · Intellect</span>
+    </div>
+    <div class="planet-card">
+      <span class="planet-symbol">♃</span>
+      <span class="planet-name-skt">बृहस्पति</span>
+      <span class="planet-name-eng">Guru — Jupiter</span>
+      <span class="planet-governs">Wisdom · Children · Wealth · Teacher · Dharma</span>
+    </div>
+    <div class="planet-card">
+      <span class="planet-symbol">♀</span>
+      <span class="planet-name-skt">शुक्र</span>
+      <span class="planet-name-eng">Shukra — Venus</span>
+      <span class="planet-governs">Love · Beauty · Luxury · Creativity · Relationships</span>
+    </div>
+    <div class="planet-card">
+      <span class="planet-symbol">♄</span>
+      <span class="planet-name-skt">शनि</span>
+      <span class="planet-name-eng">Shani — Saturn</span>
+      <span class="planet-governs">Karma · Discipline · Delay · Longevity · Lessons</span>
+    </div>
+    <div class="planet-card">
+      <span class="planet-symbol">☊</span>
+      <span class="planet-name-skt">राहु</span>
+      <span class="planet-name-eng">Rahu — North Node</span>
+      <span class="planet-governs">Obsession · Foreign · Ambition · Future Karma</span>
+    </div>
+    <div class="planet-card">
+      <span class="planet-symbol">☋</span>
+      <span class="planet-name-skt">केतु</span>
+      <span class="planet-name-eng">Ketu — South Node</span>
+      <span class="planet-governs">Liberation · Past Life · Spirituality · Detachment</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div style="text-align:center; margin-bottom:0;">
+    <div class="section-label" style="justify-content:center;">How It Works</div>
+    <h2 class="section-title" style="text-align:center;">The Reading <em>Process</em></h2>
+    <p class="section-desc" style="text-align:center; margin:0 auto;">Simple, clear and delivered with precision.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <span class="step-num">// Step 01</span>
+      <span class="step-icon">📋</span>
+      <h3>Book & Submit Details</h3>
+      <p>Complete the booking form with your exact birth details — date, time and place of birth. Precision in birth time leads to precision in reading.</p>
+    </div>
+    <div class="process-step">
+      <span class="step-num">// Step 02</span>
+      <span class="step-icon">🔯</span>
+      <h3>Chart Calculation</h3>
+      <p>Your Janma Kundali is calculated using classical Vedic methods including Lahiri ayanamsha, house system and all divisional charts (Varga charts).</p>
+    </div>
+    <div class="process-step">
+      <span class="step-num">// Step 03</span>
+      <span class="step-icon">🪐</span>
+      <h3>Deep Analysis</h3>
+      <p>A thorough analysis of all houses, planets, yogas, dashas and nakshatras. Your specific questions are addressed with dedicated focus.</p>
+    </div>
+    <div class="process-step">
+      <span class="step-num">// Step 04</span>
+      <span class="step-icon">🎯</span>
+      <h3>Written Report + Call</h3>
+      <p>A detailed written report delivered first. Followed by a live video consultation to discuss findings, answer questions and provide remedies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KUNDALI BUILDER -->
+<section id="kundali" style="background:var(--black); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:7rem 4rem;">
+  <div style="text-align:center; margin-bottom:3rem;">
+    <div class="section-label" style="justify-content:center;">Free Tool</div>
+    <h2 class="section-title" style="text-align:center;">Generate Your <em>Janma Kundali</em></h2>
+    <p class="section-desc" style="text-align:center; margin:0 auto; max-width:52ch;">Enter your birth details below to generate an indicative Vedic birth chart. For a full in-depth reading with remedies, book a consultation.</p>
+  </div>
+
+  <div style="max-width:900px; margin:0 auto; background:var(--card); border:1px solid var(--border); border-radius:8px; overflow:hidden;">
+
+    <!-- Form -->
+    <div id="kform" style="padding:2.5rem;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+        <div>
+          <div style="font-family:var(--sans); font-size:0.68rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Date of Birth *</div>
+          <div style="display:grid; grid-template-columns:1fr 2fr 1.5fr; gap:6px;">
+            <select id="k-dob-day" style="background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.82rem; padding:0.75rem 0.5rem; outline:none; cursor:pointer; transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(139,92,246,0.4)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'">
+              <option value="">Day</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+            </select>
+            <select id="k-dob-month" style="background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.82rem; padding:0.75rem 0.5rem; outline:none; cursor:pointer; transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(139,92,246,0.4)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'">
+              <option value="">Month</option>
+              <option value="01">January</option><option value="02">February</option><option value="03">March</option>
+              <option value="04">April</option><option value="05">May</option><option value="06">June</option>
+              <option value="07">July</option><option value="08">August</option><option value="09">September</option>
+              <option value="10">October</option><option value="11">November</option><option value="12">December</option>
+            </select>
+            <select id="k-dob-year" style="background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.82rem; padding:0.75rem 0.5rem; outline:none; cursor:pointer; transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(139,92,246,0.4)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'">
+              <option value="">Year</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option><option value="1929">1929</option><option value="1928">1928</option><option value="1927">1927</option><option value="1926">1926</option><option value="1925">1925</option><option value="1924">1924</option><option value="1923">1923</option><option value="1922">1922</option><option value="1921">1921</option><option value="1920">1920</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--sans); font-size:0.68rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Exact Time of Birth *</div>
+          <input type="time" id="k-tob" style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.88rem; padding:0.75rem 1rem; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(139,92,246,0.4)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'">
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+        <div>
+          <div style="font-family:var(--sans); font-size:0.68rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Place of Birth *</div>
+          <input type="text" id="k-pob" placeholder="e.g. Mumbai, India" style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.88rem; padding:0.75rem 1rem; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(139,92,246,0.4)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'">
+        </div>
+        <div>
+          <div style="font-family:var(--sans); font-size:0.68rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Your Name (optional)</div>
+          <input type="text" id="k-name" placeholder="For your chart heading" style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.88rem; padding:0.75rem 1rem; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(139,92,246,0.4)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'">
+        </div>
+      </div>
+
+      <!-- GDPR notice -->
+      <div style="font-size:0.72rem; color:var(--muted); line-height:1.6; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:4px; background:var(--accent-dim); margin-bottom:1.25rem;">
+        🔒 <strong style="color:var(--white);">Privacy Notice:</strong> The birth details you enter here are processed locally in your browser only — they are not stored, transmitted or shared with any third party. This tool provides an indicative chart for general guidance only. For a full consultation your details will be collected via the contact form subject to our UK GDPR compliant privacy policy.
+      </div>
+
+      <button onclick="buildKundali()" style="width:100%; background:linear-gradient(135deg,var(--purple),var(--violet)); color:#fff; font-family:var(--sans); font-size:0.82rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; padding:0.9rem; border:none; border-radius:4px; cursor:pointer; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">🔯 Generate My Kundali</button>
+
+      <div style="text-align:center; margin-top:1rem; font-family:var(--sans); font-size:0.72rem; color:var(--muted); font-style:italic;">ज्योतिषामयनं चक्षुः — Jyotish is the eye of the Vedas</div>
+    </div>
+
+    <!-- Result -->
+    <div id="kresult" style="display:none; padding:2.5rem;">
+
+      <div id="k-header" style="text-align:center; margin-bottom:1.5rem;">
+        <div style="font-family:var(--serif); font-size:1.3rem; font-weight:500; color:var(--white);" id="k-title"></div>
+        <div style="font-family:var(--sans); font-size:0.78rem; color:var(--muted); margin-top:0.25rem;" id="k-subtitle"></div>
+      </div>
+
+      <!-- Kundali SVG Chart — larger with house labels -->
+      <div style="max-width:420px; margin:0 auto 1.5rem;">
+        <svg id="k-svg" viewBox="0 0 420 420" width="100%" style="border:1px solid var(--border); border-radius:8px; background:rgba(13,11,26,0.85);">
+          <!-- Outer border -->
+          <rect x="2" y="2" width="416" height="416" fill="none" stroke="rgba(139,92,246,0.3)" stroke-width="1"/>
+          <!-- Inner diamond -->
+          <polygon points="210,2 418,210 210,418 2,210" fill="none" stroke="rgba(245,158,11,0.3)" stroke-width="1"/>
+          <!-- Diagonals -->
+          <line x1="2" y1="2" x2="210" y2="210" stroke="rgba(139,92,246,0.15)" stroke-width="0.5"/>
+          <line x1="418" y1="2" x2="210" y2="210" stroke="rgba(139,92,246,0.15)" stroke-width="0.5"/>
+          <line x1="2" y1="418" x2="210" y2="210" stroke="rgba(139,92,246,0.15)" stroke-width="0.5"/>
+          <line x1="418" y1="418" x2="210" y2="210" stroke="rgba(139,92,246,0.15)" stroke-width="0.5"/>
+          <!-- Lagna highlight -->
+          <polygon points="210,2 418,210 210,210" fill="rgba(139,92,246,0.07)" stroke="none"/>
+          <!-- OM centre -->
+          <text x="210" y="218" text-anchor="middle" font-size="20" fill="rgba(245,158,11,0.3)" font-family="Noto Serif Devanagari">ॐ</text>
+
+          <!-- H1 — top triangle — Lagna/Self -->
+          <text x="210" y="24" text-anchor="middle" font-size="9" fill="rgba(245,158,11,0.9)" font-weight="bold">1</text>
+          <text x="210" y="36" text-anchor="middle" font-size="7" fill="rgba(245,158,11,0.6)">Self · Body</text>
+          <text id="k-lagna-skt" x="210" y="50" text-anchor="middle" font-size="8" fill="rgba(245,158,11,0.7)" font-family="Noto Serif Devanagari"></text>
+          <text id="k-p1" x="210" y="80" text-anchor="middle" font-size="11" fill="rgba(240,192,64,0.95)" font-weight="600"></text>
+
+          <!-- H2 — top-right -->
+          <text x="348" y="90" text-anchor="middle" font-size="9" fill="rgba(168,85,247,0.7)">2</text>
+          <text x="348" y="102" text-anchor="middle" font-size="7" fill="rgba(168,85,247,0.5)">Wealth</text>
+          <text id="k-p2" x="348" y="128" text-anchor="middle" font-size="11" fill="rgba(168,85,247,0.9)"></text>
+
+          <!-- H3 — right -->
+          <text x="395" y="200" text-anchor="middle" font-size="9" fill="rgba(168,85,247,0.7)">3</text>
+          <text x="395" y="212" text-anchor="middle" font-size="7" fill="rgba(168,85,247,0.5)">Siblings</text>
+          <text id="k-p3" x="378" y="210" text-anchor="middle" font-size="11" fill="rgba(168,85,247,0.9)"></text>
+
+          <!-- H4 — bottom-right -->
+          <text x="348" y="322" text-anchor="middle" font-size="9" fill="rgba(168,85,247,0.7)">4</text>
+          <text x="348" y="334" text-anchor="middle" font-size="7" fill="rgba(168,85,247,0.5)">Home · Mother</text>
+          <text id="k-p4" x="348" y="310" text-anchor="middle" font-size="11" fill="rgba(168,85,247,0.9)"></text>
+
+          <!-- H5 — bottom -->
+          <text x="210" y="394" text-anchor="middle" font-size="9" fill="rgba(168,85,247,0.7)">5</text>
+          <text x="210" y="406" text-anchor="middle" font-size="7" fill="rgba(168,85,247,0.5)">Children · Intellect</text>
+          <text id="k-p5" x="210" y="376" text-anchor="middle" font-size="11" fill="rgba(168,85,247,0.9)"></text>
+
+          <!-- H6 — bottom-left -->
+          <text x="72" y="322" text-anchor="middle" font-size="9" fill="rgba(168,85,247,0.7)">6</text>
+          <text x="72" y="334" text-anchor="middle" font-size="7" fill="rgba(168,85,247,0.5)">Enemies · Health</text>
+          <text id="k-p6" x="72" y="310" text-anchor="middle" font-size="11" fill="rgba(168,85,247,0.9)"></text>
+
+          <!-- H7 — left -->
+          <text x="25" y="200" text-anchor="middle" font-size="9" fill="rgba(168,85,247,0.7)">7</text>
+          <text x="25" y="212" text-anchor="middle" font-size="7" fill="rgba(168,85,247,0.5)">Partner</text>
+          <text id="k-p7" x="42" y="210" text-anchor="middle" font-size="11" fill="rgba(168,85,247,0.9)"></text>
+
+          <!-- H8 — top-left -->
+          <text x="72" y="90" text-anchor="middle" font-size="9" fill="rgba(168,85,247,0.7)">8</text>
+          <text x="72" y="102" text-anchor="middle" font-size="7" fill="rgba(168,85,247,0.5)">Longevity</text>
+          <text id="k-p8" x="72" y="128" text-anchor="middle" font-size="11" fill="rgba(168,85,247,0.9)"></text>
+
+          <!-- H9 — inner top-right -->
+          <text x="300" y="138" text-anchor="middle" font-size="9" fill="rgba(168,85,247,0.6)">9</text>
+          <text x="300" y="150" text-anchor="middle" font-size="7" fill="rgba(168,85,247,0.4)">Dharma · Luck</text>
+          <text id="k-p9" x="300" y="172" text-anchor="middle" font-size="11" fill="rgba(168,85,247,0.8)"></text>
+
+          <!-- H10 — inner bottom-right -->
+          <text x="300" y="265" text-anchor="middle" font-size="9" fill="rgba(168,85,247,0.6)">10</text>
+          <text x="300" y="277" text-anchor="middle" font-size="7" fill="rgba(168,85,247,0.4)">Career · Status</text>
+          <text id="k-p10" x="300" y="252" text-anchor="middle" font-size="11" fill="rgba(168,85,247,0.8)"></text>
+
+          <!-- H11 — inner bottom-left -->
+          <text x="120" y="265" text-anchor="middle" font-size="9" fill="rgba(168,85,247,0.6)">11</text>
+          <text x="120" y="277" text-anchor="middle" font-size="7" fill="rgba(168,85,247,0.4)">Gains · Network</text>
+          <text id="k-p11" x="120" y="252" text-anchor="middle" font-size="11" fill="rgba(168,85,247,0.8)"></text>
+
+          <!-- H12 — inner top-left -->
+          <text x="120" y="138" text-anchor="middle" font-size="9" fill="rgba(168,85,247,0.6)">12</text>
+          <text x="120" y="150" text-anchor="middle" font-size="7" fill="rgba(168,85,247,0.4)">Losses · Moksha</text>
+          <text id="k-p12" x="120" y="172" text-anchor="middle" font-size="11" fill="rgba(168,85,247,0.8)"></text>
+        </svg>
+      </div>
+
+      <!-- 12 Houses Reference Grid -->
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem; flex-wrap:wrap; gap:0.5rem;">
+        <div style="font-family:var(--sans); font-size:0.68rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase;">12 Houses — Bhava Significance</div>
+        <div style="font-size:0.65rem; color:rgba(168,85,247,0.5); font-style:italic; font-family:var(--serif);">📖 Source: Brihat Parashara Hora Shastra (BPHS) — Maharishi Parashara</div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.2); border-radius:6px; overflow:hidden; margin-bottom:1.5rem;" id="k-house-grid">
+        <!-- Generated by JS -->
+      </div>
+
+      <!-- Key metrics -->
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin-bottom:1.5rem;">
+        <div style="background:var(--deep); border:1px solid var(--border); border-radius:6px; padding:0.85rem; text-align:center;">
+          <div style="font-family:var(--sans); font-size:0.62rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.3rem;">Lagna</div>
+          <div style="font-family:var(--serif); font-size:1rem; font-weight:500; color:var(--gold);" id="k-lagna-out">—</div>
+        </div>
+        <div style="background:var(--deep); border:1px solid var(--border); border-radius:6px; padding:0.85rem; text-align:center;">
+          <div style="font-family:var(--sans); font-size:0.62rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.3rem;">Moon Sign</div>
+          <div style="font-family:var(--serif); font-size:1rem; font-weight:500; color:var(--violet);" id="k-moon-out">—</div>
+        </div>
+        <div style="background:var(--deep); border:1px solid var(--border); border-radius:6px; padding:0.85rem; text-align:center;">
+          <div style="font-family:var(--sans); font-size:0.62rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.3rem;">Nakshatra</div>
+          <div style="font-family:var(--serif); font-size:1rem; font-weight:500; color:var(--white);" id="k-naksh-out">—</div>
+        </div>
+      </div>
+
+      <!-- Planets table -->
+      <div style="font-family:var(--sans); font-size:0.68rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.75rem;">Planetary Positions</div>
+      <div id="k-planets" style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.5rem;"></div>
+
+      <!-- Dasha -->
+      <div style="font-family:var(--sans); font-size:0.68rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.75rem;">Current Mahadasha</div>
+      <div id="k-dasha" style="background:var(--deep); border:1px solid var(--border); border-radius:6px; padding:1rem; font-size:0.85rem; color:var(--muted); line-height:1.7; margin-bottom:1.5rem;"></div>
+
+      <!-- Insights -->
+      <div style="font-family:var(--sans); font-size:0.68rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.75rem;">Key Insights</div>
+      <div id="k-insights" style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:2rem;"></div>
+
+      <!-- Disclaimer -->
+      <div style="font-size:0.72rem; color:var(--muted); line-height:1.65; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:4px; background:rgba(139,92,246,0.04); margin-bottom:1.5rem;">
+        ⚠️ <strong style="color:var(--white);">Indicative Chart Only:</strong> This free tool provides a general indication based on your birth details. The planetary positions shown are approximate. For a precise, in-depth Janma Kundali reading with full dasha analysis, divisional charts, yogas, nakshatras and remedies — book a consultation with Nitin Wadekar.
+      </div>
+
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+        <button onclick="resetKundali()" style="flex:1; background:transparent; border:1px solid var(--border-bright); color:var(--violet); font-family:var(--sans); font-size:0.78rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; padding:0.8rem; border-radius:4px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.background='var(--accent-dim)'" onmouseout="this.style.background='transparent'">Generate Another Chart</button>
+        <a href="#contact" onclick="document.getElementById('kresult').style.display='none'; document.getElementById('kform').style.display='block';" style="flex:1; background:linear-gradient(135deg,var(--purple),var(--violet)); color:#fff; font-family:var(--sans); font-size:0.78rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; padding:0.8rem; border-radius:4px; cursor:pointer; text-decoration:none; text-align:center; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">🔯 Book a Full Reading</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div style="text-align:center; margin-bottom:0;">
+    <div class="section-label" style="justify-content:center;">Consultation Packages</div>
+    <h2 class="section-title" style="text-align:center;">Choose Your <em>Reading</em></h2>
+    <p class="section-desc" style="text-align:center; margin:0 auto;">All readings include full chart calculation and written report.</p>
+  </div>
+  <div class="packages-grid">
+
+    <div class="pkg-card">
+      <div class="pkg-name-skt">लघु दर्शन</div>
+      <div class="pkg-name">Laghu Darshan</div>
+      <div class="pkg-tagline">A brief but focused reading</div>
+      <div class="pkg-price">£51</div>
+      <div class="pkg-duration">30 min video call + written report</div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-features">
+        <li>Full Janma Kundali calculation</li>
+        <li>One focused area of enquiry</li>
+        <li>Current dasha & transit overview</li>
+        <li>Written summary report</li>
+        <li>30 minute video consultation</li>
+      </ul>
+      <a href="https://buy.stripe.com/test_28EaEY3MzcXmeZa8D23ZK00" target="_blank" class="pkg-btn pkg-btn-outline">Book Laghu Darshan</a>
+    </div>
+
+    <div class="pkg-card featured">
+      <div class="pkg-badge">Most Popular ✦</div>
+      <div class="pkg-name-skt">पूर्ण ज्योतिष</div>
+      <div class="pkg-name">Purna Jyotish</div>
+      <div class="pkg-tagline">The complete birth chart reading</div>
+      <div class="pkg-price">£151</div>
+      <div class="pkg-duration">60 min video call + full written report</div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-features">
+        <li>Full Janma Kundali — all 12 houses</li>
+        <li>All 9 planets analysed in depth</li>
+        <li>Vimshottari dasha analysis</li>
+        <li>Nakshatra of moon & ascendant</li>
+        <li>Current & upcoming planetary periods</li>
+        <li>Remedial recommendations</li>
+        <li>Full written report (10+ pages)</li>
+        <li>60 minute video consultation</li>
+      </ul>
+      <a href="https://buy.stripe.com/test_5kQaEYgzl1eEdV6bPe3ZK01" target="_blank" class="pkg-btn pkg-btn-filled">Book Purna Jyotish</a>
+    </div>
+
+    <div class="pkg-card">
+      <div class="pkg-name-skt">महा ज्योतिष</div>
+      <div class="pkg-name">Maha Jyotish</div>
+      <div class="pkg-tagline">The comprehensive life reading</div>
+      <div class="pkg-price">£251</div>
+      <div class="pkg-duration">90 min call + report + follow-up</div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-features">
+        <li>Everything in Purna Jyotish</li>
+        <li>Divisional charts (D-9, D-10, D-7)</li>
+        <li>Jaimini astrology techniques</li>
+        <li>ShivYog sadhana integration</li>
+        <li>Detailed remedial programme</li>
+        <li>90 minute video consultation</li>
+        <li>30 min follow-up call (1 month later)</li>
+        <li>Email support for 30 days</li>
+      </ul>
+      <a href="https://buy.stripe.com/test_dRm14o2Iv9La7wIf1q3ZK02" target="_blank" class="pkg-btn pkg-btn-outline">Book Maha Jyotish</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- DAILY BLOG -->
+<section id="blog" style="background:var(--black); border-top:1px solid var(--border); padding:7rem 4rem;">
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1.5rem; margin-bottom:3rem;">
+    <div>
+      <div class="section-label">Daily Wisdom</div>
+      <h2 class="section-title">Vedic Astrology <em>Blog</em></h2>
+      <p style="font-family:var(--deva); font-size:0.85rem; color:var(--gold); margin-top:0.5rem;">ज्योतिष ज्ञान — Jyotish Knowledge</p>
+    </div>
+    <p class="section-desc" style="max-width:38ch;">Daily insights on Vedic astrology, planetary transits, nakshatras and ancient Jyotish wisdom. Generated fresh every day.</p>
+  </div>
+
+  <!-- Topic filter -->
+  <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:2rem;" id="blog-filters">
+    <button onclick="loadBlog('all', this)" style="background:var(--purple); border:none; color:#fff; font-family:var(--sans); font-size:0.72rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1.25rem; border-radius:20px; cursor:pointer;">All Topics</button>
+    <button onclick="loadBlog('planets', this)" style="background:transparent; border:1px solid rgba(245,158,11,0.4); color:var(--gold); font-family:var(--sans); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1.25rem; border-radius:20px; cursor:pointer;">Planets</button>
+    <button onclick="loadBlog('houses', this)" style="background:transparent; border:1px solid rgba(168,85,247,0.4); color:var(--violet); font-family:var(--sans); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1.25rem; border-radius:20px; cursor:pointer;">Houses</button>
+    <button onclick="loadBlog('nakshatras', this)" style="background:transparent; border:1px solid rgba(232,121,249,0.4); color:rgba(232,121,249,0.9); font-family:var(--sans); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1.25rem; border-radius:20px; cursor:pointer;">Nakshatras</button>
+    <button onclick="loadBlog('remedies', this)" style="background:transparent; border:1px solid rgba(34,197,94,0.4); color:rgba(34,197,94,0.9); font-family:var(--sans); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1.25rem; border-radius:20px; cursor:pointer;">Remedies</button>
+    <button onclick="loadBlog('karma', this)" style="background:transparent; border:1px solid rgba(59,130,246,0.4); color:rgba(100,170,255,0.9); font-family:var(--sans); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1.25rem; border-radius:20px; cursor:pointer;">Karma</button>
+  </div>
+
+  <!-- Today's featured AI post -->
+  <div id="daily-post" style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:2.5rem; margin-bottom:2rem; position:relative; overflow:hidden;">
+    <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--purple), var(--violet), var(--gold));"></div>
+    <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem; flex-wrap:wrap;">
+      <span style="font-family:var(--sans); font-size:0.65rem; background:rgba(245,158,11,0.15); color:var(--gold); border:1px solid rgba(245,158,11,0.3); border-radius:3px; padding:2px 8px; letter-spacing:0.1em; text-transform:uppercase;">Today's Post</span>
+      <span id="post-date" style="font-family:var(--sans); font-size:0.7rem; color:var(--muted);"></span>
+      <span id="post-tag" style="font-family:var(--sans); font-size:0.65rem; background:rgba(168,85,247,0.15); color:var(--violet); border:1px solid rgba(168,85,247,0.3); border-radius:3px; padding:2px 8px; letter-spacing:0.1em; text-transform:uppercase;"></span>
+    </div>
+    <h3 id="post-title" style="font-family:var(--serif); font-size:1.6rem; font-weight:400; color:var(--white); margin-bottom:1rem; line-height:1.3;"></h3>
+    <div id="post-shloka" style="font-family:var(--deva); font-size:0.95rem; color:var(--gold); margin-bottom:0.3rem;"></div>
+    <div id="post-shloka-trans" style="font-family:var(--serif); font-style:italic; font-size:0.82rem; color:var(--muted); margin-bottom:1.5rem;"></div>
+    <div id="post-content" style="font-size:0.92rem; color:var(--muted); line-height:1.85; font-weight:300;"></div>
+    <div id="post-loading" style="text-align:center; padding:3rem;">
+      <div style="font-family:var(--sans); font-size:0.82rem; color:var(--muted);">Generating today's Vedic astrology insight...</div>
+      <div style="font-family:var(--deva); font-size:1rem; color:var(--gold); margin-top:0.5rem; animation:pulse 2s infinite;">ॐ</div>
+    </div>
+  </div>
+
+  <!-- Recent posts grid -->
+  <div style="font-family:var(--sans); font-size:0.68rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:1rem;">Recent Posts</div>
+  <div id="blog-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:2rem;"></div>
+
+  <!-- Generate new post button -->
+  <div style="text-align:center;">
+    <button onclick="generateNewPost()" id="gen-btn" style="background:linear-gradient(135deg,var(--purple),var(--violet)); border:none; color:#fff; font-family:var(--sans); font-size:0.78rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; padding:0.85rem 2.5rem; border-radius:4px; cursor:pointer; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Generate New Post</button>
+    <p style="font-size:0.7rem; color:var(--muted); margin-top:0.75rem; font-style:italic;">Powered by Claude AI - Authentic Jyotish content generated fresh</p>
+  </div>
+
+  <!-- COMMENTS SECTION -->
+  <div style="margin-top:4rem; padding-top:3rem; border-top:1px solid var(--border);">
+    <div style="font-family:var(--sans); font-size:0.68rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:0.5rem;">Community</div>
+    <h3 style="font-family:var(--serif); font-size:1.6rem; font-weight:300; color:var(--white); margin-bottom:0.5rem;">Share Your <em style="color:var(--gold);">Insights</em></h3>
+    <p style="font-size:0.82rem; color:var(--muted); margin-bottom:2rem; font-weight:300;">Join the conversation — share your experiences, ask questions or offer your own Jyotish wisdom.</p>
+
+    <!-- Comment form -->
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:2rem; margin-bottom:2rem;">
+      <div style="font-family:var(--sans); font-size:0.72rem; color:var(--violet); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:1.25rem;">Leave a Comment</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+        <div>
+          <div style="font-family:var(--sans); font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Your Name *</div>
+          <input id="comment-name" type="text" placeholder="e.g. Priya Sharma" style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.85rem; padding:0.7rem 1rem; outline:none; transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(139,92,246,0.5)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'">
+        </div>
+        <div>
+          <div style="font-family:var(--sans); font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Your Lagna (optional)</div>
+          <select id="comment-lagna" style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.85rem; padding:0.7rem 1rem; outline:none; cursor:pointer;">
+            <option value="">Select your rising sign...</option>
+            <option>Aries (Mesha)</option><option>Taurus (Vrishabha)</option><option>Gemini (Mithuna)</option>
+            <option>Cancer (Karka)</option><option>Leo (Simha)</option><option>Virgo (Kanya)</option>
+            <option>Libra (Tula)</option><option>Scorpio (Vrishchika)</option><option>Sagittarius (Dhanu)</option>
+            <option>Capricorn (Makara)</option><option>Aquarius (Kumbha)</option><option>Pisces (Meena)</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-bottom:1rem;">
+        <div style="font-family:var(--sans); font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.4rem;">Your Comment *</div>
+        <textarea id="comment-text" placeholder="Share your thoughts, experiences or Jyotish insights..." style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.85rem; padding:0.7rem 1rem; outline:none; resize:vertical; min-height:100px; transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(139,92,246,0.5)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'"></textarea>
+      </div>
+      <div style="font-size:0.68rem; color:var(--muted); line-height:1.6; padding:0.6rem 0.9rem; background:rgba(139,92,246,0.05); border:1px solid var(--border); border-radius:4px; margin-bottom:1rem;">
+        🔒 Comments are moderated. Your name and comment will be visible publicly. Email is not required or stored. Please keep discussion respectful and on topic.
+      </div>
+      <button onclick="submitComment()" style="background:linear-gradient(135deg,var(--purple),var(--violet)); border:none; color:#fff; font-family:var(--sans); font-size:0.78rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; padding:0.75rem 2rem; border-radius:4px; cursor:pointer; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Post Comment 🙏</button>
+    </div>
+
+    <!-- Comments list -->
+    <div id="comments-list"></div>
+    <div id="no-comments" style="text-align:center; padding:2rem; color:var(--muted); font-size:0.85rem; font-style:italic; display:none;">Be the first to share your insights. 🪐</div>
+  </div>
+
+</section>
+
+<style>
+@keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+</style>
+
+<script>
+// Blog topics and prompts
+const BLOG_TOPICS = {
+  planets: ['Sun in astrology', 'Moon sign significance', 'Mars and courage', 'Mercury and intelligence', 'Jupiter and wisdom', 'Venus and relationships', 'Saturn and karma', 'Rahu shadow lessons', 'Ketu and liberation'],
+  houses: ['First house self and body', 'Second house wealth', 'Seventh house marriage', 'Tenth house career', 'Fourth house home and mother', 'Ninth house dharma and fortune'],
+  nakshatras: ['Ashwini nakshatra healing', 'Rohini nakshatra abundance', 'Chitra nakshatra creativity', 'Shravana nakshatra listening', 'Pushya nakshatra nourishment', 'Jyeshtha nakshatra seniority'],
+  remedies: ['Saturn remedy mantras', 'Rahu Ketu remedies', 'Mars remedies and gemstones', 'Venus remedies for relationships', 'Jupiter remedies for wisdom'],
+  karma: ['Karma and free will in Jyotish', 'Karmic patterns in birth chart', 'Past life indicators in Jyotish', 'Dharma and karma', 'Breaking karmic cycles']
+};
+
+const BLOG_SHLOKAS = [
+  {skt:'yatha pinde tatha brahmande', trans:'As is the microcosm so is the macrocosm', src:'Yajur Veda'},
+  {skt:'jyotishamayanam chakshuh', trans:'Jyotish is the eye of the Vedas', src:'Vedanga Jyotisha'},
+  {skt:'kalo pachati bhutani', trans:'Time ripens all beings', src:'Mahabharata'},
+  {skt:'karma karo phala ki chinta mat karo', trans:'Perform your karma without attachment to results', src:'Bhagavad Gita 2.47'},
+  {skt:'grahah karmavipakahetavah', trans:'Planets are the instruments of karmic fruition', src:'BPHS'},
+];
+
+let currentTopic = 'all';
+let savedPosts = [];
+
+function getBlogPrompt(topic) {
+  const topicMap = {
+    all: ['Sun in Vedic astrology', 'Saturn karma lessons', 'Rahu obsession and shadow', 'Moon emotional intelligence', 'Jupiter wisdom and grace', 'Venus love and beauty', 'Mars courage and action', 'Mercury communication', 'Ketu liberation and past life'],
+    ...BLOG_TOPICS
+  };
+  const topics = topicMap[topic] || topicMap.all;
+  const chosen = topics[Math.floor(Math.random() * topics.length)];
+  const shloka = BLOG_SHLOKAS[Math.floor(Math.random() * BLOG_SHLOKAS.length)];
+
+  return {
+    topic: chosen,
+    shloka,
+    prompt: `You are an expert Vedic astrologer and Jyotish scholar. Write a detailed, educational blog post about "${chosen}" for the website vedicastrovidya.com.
+
+The post must:
+- Be 400-500 words
+- Include authentic Vedic/Jyotish knowledge from classical texts like BPHS, Saravali or Brihat Jataka
+- Mention specific planetary effects, house placements or nakshatra connections
+- Include practical guidance for readers
+- Reference this shloka naturally: "${shloka.skt}" (${shloka.trans})
+- End with a call to book a personal reading at vedicastrovidya.com
+- Be written in an authoritative yet accessible style
+- Do NOT use markdown headers or bullet points - write in flowing paragraphs
+
+Return a JSON object with exactly these fields:
+{
+  "title": "engaging blog post title",
+  "tag": "one of: Planets | Houses | Nakshatras | Remedies | Karma",
+  "content": "the full blog post as HTML paragraphs using only <p> tags"
+}`
+  };
+}
+
+async function generatePost(topic) {
+  const {prompt, shloka, topic: chosenTopic} = getBlogPrompt(topic);
+
+  document.getElementById('post-loading').style.display = 'block';
+  document.getElementById('post-title').textContent = '';
+  document.getElementById('post-content').innerHTML = '';
+  document.getElementById('post-shloka').textContent = '';
+  document.getElementById('post-shloka-trans').textContent = '';
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        messages: [{role: 'user', content: prompt}]
+      })
+    });
+
+    const data = await res.json();
+    const text = data.content.map(b => b.text || '').join('');
+    const clean = text.replace(/```json|```/g, '').trim();
+    const post = JSON.parse(clean);
+
+    document.getElementById('post-loading').style.display = 'none';
+    document.getElementById('post-title').textContent = post.title;
+    document.getElementById('post-content').innerHTML = post.content;
+    document.getElementById('post-shloka').textContent = shloka.skt;
+    document.getElementById('post-shloka-trans').textContent = shloka.trans + ' - ' + shloka.src;
+    document.getElementById('post-tag').textContent = post.tag || chosenTopic;
+    document.getElementById('post-date').textContent = new Date().toLocaleDateString('en-GB', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+
+    // Save to recent posts
+    savedPosts.unshift({title: post.title, tag: post.tag, excerpt: post.content.replace(/<[^>]+>/g,'').slice(0,120) + '...', date: new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short'})});
+    if (savedPosts.length > 6) savedPosts = savedPosts.slice(0, 6);
+    renderRecentPosts();
+
+  } catch(e) {
+    document.getElementById('post-loading').style.display = 'none';
+    document.getElementById('post-title').textContent = 'Saturn: The Great Teacher of Karma';
+    document.getElementById('post-shloka').textContent = 'grahah karmavipakahetavah';
+    document.getElementById('post-shloka-trans').textContent = 'Planets are the instruments of karmic fruition - BPHS';
+    document.getElementById('post-tag').textContent = 'Planets';
+    document.getElementById('post-date').textContent = new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    document.getElementById('post-content').innerHTML = '<p>Of all the nine grahas in the Vedic system, none is more misunderstood - or more powerful - than Shani, Saturn. In popular astrology, Saturn is feared. The Sade Sati is dreaded. The Saturn dasha is approached with anxiety. Yet the ancient rishis who gave us Jyotish understood something that most modern practitioners have forgotten: Saturn is not a malefic. Saturn is a guru.</p><p>In the Brihat Parashara Hora Shastra, Shani is described as the son of Surya, the Sun - a relationship that tells us much about his nature. Just as a strict father disciplines a child not out of cruelty but out of love, Saturn restricts and delays not to punish, but to teach. Every delay Saturn brings is an invitation to develop patience, discipline and self-mastery. Every limitation is a karmic lesson that the soul has agreed - at some deeper level - to learn.</p><p>Saturn governs the 6th, 8th and 12th houses by natural signification - the houses of challenge, transformation and liberation. This is no coincidence. Saturn is the planet of karma made visible, of consequences made tangible. Where Jupiter gives freely, Saturn asks you to earn. Where Venus brings grace, Saturn brings responsibility. This is the divine economy of the cosmos.</p><p>The most powerful placement for Saturn - his own signs of Capricorn and Aquarius, or his exaltation in Libra - creates individuals of extraordinary discipline and lasting achievement. Think of the great builders, the patient innovators, the long-term thinkers. All carry the mark of a strong Saturn.</p><p>To understand your own Saturn - its house, its sign, its aspects and its dasha period - is to understand the deepest karmic curriculum of this lifetime. Book a personal Jyotish reading at vedicastrovidya.com and discover what your Saturn is truly teaching you.</p>';
+  }
+}
+
+function renderRecentPosts() {
+  const grid = document.getElementById('blog-grid');
+  if (!grid || savedPosts.length === 0) return;
+  grid.innerHTML = '';
+  savedPosts.slice(0, 6).forEach(p => {
+    const d = document.createElement('div');
+    d.style.cssText = 'background:var(--card); border:1px solid var(--border); border-radius:8px; padding:1.5rem; cursor:pointer; transition:border-color 0.2s;';
+    d.onmouseover = () => d.style.borderColor = 'rgba(168,85,247,0.4)';
+    d.onmouseout = () => d.style.borderColor = 'rgba(139,92,246,0.15)';
+    d.innerHTML =
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">' +
+        '<span style="font-size:0.65rem;background:rgba(168,85,247,0.12);color:var(--violet);border:1px solid rgba(168,85,247,0.25);border-radius:3px;padding:2px 7px;font-family:var(--sans);letter-spacing:0.08em;text-transform:uppercase;">' + p.tag + '</span>' +
+        '<span style="font-size:0.65rem;color:var(--muted);font-family:var(--sans);">' + p.date + '</span>' +
+      '</div>' +
+      '<div style="font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--white);margin-bottom:0.6rem;line-height:1.35;">' + p.title + '</div>' +
+      '<div style="font-size:0.78rem;color:var(--muted);line-height:1.6;font-weight:300;">' + p.excerpt + '</div>';
+    grid.appendChild(d);
+  });
+}
+
+function loadBlog(topic, btn) {
+  currentTopic = topic;
+  document.querySelectorAll('#blog-filters button').forEach(b => {
+    b.style.background = 'transparent';
+    b.style.color = 'var(--muted)';
+    b.style.border = '1px solid rgba(139,92,246,0.25)';
+  });
+  btn.style.background = 'var(--purple)';
+  btn.style.color = '#fff';
+  generatePost(topic);
+}
+
+function generateNewPost() {
+  const btn = document.getElementById('gen-btn');
+  btn.textContent = 'Generating...';
+  btn.disabled = true;
+  generatePost(currentTopic).finally(() => {
+    btn.textContent = 'Generate New Post';
+    btn.disabled = false;
+  });
+}
+
+// Load on page load
+window.addEventListener('load', function() {
+  generatePost('all');
+  renderRecentPosts();
+  loadComments();
+});
+
+// -- COMMENTS --
+function loadComments() {
+  try {
+    const stored = localStorage.getItem('vav_comments');
+    const comments = stored ? JSON.parse(stored) : [];
+    renderComments(comments);
+  } catch(e) { renderComments([]); }
+}
+
+function saveComment(comment) {
+  try {
+    const stored = localStorage.getItem('vav_comments');
+    const comments = stored ? JSON.parse(stored) : [];
+    comments.unshift(comment);
+    if (comments.length > 50) comments.splice(50);
+    localStorage.setItem('vav_comments', JSON.stringify(comments));
+    return comments;
+  } catch(e) { return [comment]; }
+}
+
+function submitComment() {
+  const name = document.getElementById('comment-name').value.trim();
+  const text = document.getElementById('comment-text').value.trim();
+  const lagna = document.getElementById('comment-lagna').value;
+
+  if (!name) { alert('Please enter your name.'); return; }
+  if (!text || text.length < 10) { alert('Please write a comment of at least 10 characters.'); return; }
+  if (text.length > 1000) { alert('Comment must be under 1000 characters.'); return; }
+
+  const comment = {
+    id: Date.now(),
+    name,
+    lagna: lagna || null,
+    text,
+    date: new Date().toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}),
+    time: new Date().toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'}),
+    likes: 0
+  };
+
+  const comments = saveComment(comment);
+  renderComments(comments);
+
+  document.getElementById('comment-name').value = '';
+  document.getElementById('comment-text').value = '';
+  document.getElementById('comment-lagna').value = '';
+
+  // Scroll to new comment
+  setTimeout(() => {
+    const first = document.querySelector('#comments-list .comment-card');
+    if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+  }, 100);
+}
+
+function likeComment(id) {
+  try {
+    const stored = localStorage.getItem('vav_comments');
+    const comments = stored ? JSON.parse(stored) : [];
+    const c = comments.find(c => c.id === id);
+    if (c) {
+      c.likes = (c.likes || 0) + 1;
+      localStorage.setItem('vav_comments', JSON.stringify(comments));
+      renderComments(comments);
+    }
+  } catch(e) {}
+}
+
+function renderComments(comments) {
+  const list = document.getElementById('comments-list');
+  const none = document.getElementById('no-comments');
+  if (!list) return;
+
+  if (!comments || comments.length === 0) {
+    list.innerHTML = '';
+    if (none) none.style.display = 'block';
+    return;
+  }
+  if (none) none.style.display = 'none';
+
+  list.innerHTML = '<div style="font-family:var(--sans);font-size:0.68rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1rem;">' + comments.length + ' Comment' + (comments.length !== 1 ? 's' : '') + '</div>';
+
+  comments.forEach(c => {
+    const initials = c.name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0,2);
+    const d = document.createElement('div');
+    d.className = 'comment-card';
+    d.style.cssText = 'background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.25rem;margin-bottom:0.75rem;transition:border-color 0.2s;';
+    d.onmouseover = () => d.style.borderColor = 'rgba(168,85,247,0.3)';
+    d.onmouseout = () => d.style.borderColor = 'rgba(139,92,246,0.15)';
+    d.innerHTML =
+      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">' +
+        '<div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--violet));display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:0.75rem;font-weight:600;color:#fff;flex-shrink:0;">' + initials + '</div>' +
+        '<div style="flex:1;">' +
+          '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' +
+            '<span style="font-family:var(--sans);font-size:0.85rem;font-weight:500;color:var(--white);">' + c.name + '</span>' +
+            (c.lagna ? '<span style="font-size:0.65rem;background:rgba(168,85,247,0.12);color:var(--violet);border:1px solid rgba(168,85,247,0.25);border-radius:3px;padding:1px 6px;">' + c.lagna + '</span>' : '') +
+          '</div>' +
+          '<div style="font-family:var(--sans);font-size:0.68rem;color:var(--muted);">' + c.date + ' at ' + c.time + '</div>' +
+        '</div>' +
+        '<button onclick="likeComment(' + c.id + ')" style="background:transparent;border:1px solid var(--border);color:var(--muted);font-family:var(--sans);font-size:0.7rem;padding:4px 10px;border-radius:20px;cursor:pointer;transition:all 0.2s;white-space:nowrap;" onmouseover="this.style.borderColor=\'rgba(168,85,247,0.4)\';this.style.color=\'var(--violet)\'" onmouseout="this.style.borderColor=\'rgba(139,92,246,0.15)\';this.style.color=\'var(--muted)\'">' +
+          (c.likes > 0 ? ' ' + c.likes : ' Like') +
+        '</button>' +
+      '</div>' +
+      '<div style="font-size:0.85rem;color:rgba(255,255,255,0.75);line-height:1.7;padding-left:46px;">' + c.text.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div>';
+    list.appendChild(d);
+  });
+}
+</script>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div style="text-align:center; margin-bottom:0;">
+    <div class="section-label" style="justify-content:center;">Client Experiences</div>
+    <h2 class="section-title" style="text-align:center;">What Seekers <em>Say</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"The reading was extraordinarily accurate. Nitin identified karmic patterns I had been carrying for years and explained exactly which planetary periods had been responsible. The remedies he prescribed have genuinely helped."</div>
+      <div class="testi-author">Priya M. — London</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"What I appreciated most was the integration of ShivYog teachings with the astrological analysis. It was not just a reading — it was a roadmap for my sadhana. I have booked a follow-up already."</div>
+      <div class="testi-author">Rajesh K. — Birmingham</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"I was sceptical at first but the precision of the Janma Kundali reading convinced me. My career situation, family dynamics and health patterns were all described with startling accuracy. Highly recommended."</div>
+      <div class="testi-author">Anita S. — Manchester</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Book Your <em>Reading</em></h2>
+      <p class="section-desc" style="margin-bottom:2.5rem;">All readings are conducted via video call. Please provide your exact birth details when booking for accurate chart calculation.</p>
+
+      <div class="contact-info-item">
+        <div class="contact-icon">🌐</div>
+        <div>
+          <div class="contact-info-label">Website</div>
+          <div class="contact-info-val">vedicastrovidya.com</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">📧</div>
+        <div>
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-val">info@vedicastrovidya.com</div>
+        </div>
+      </div>
+      <div class="contact-info-item">
+        <div class="contact-icon">🕉️</div>
+        <div>
+          <div class="contact-info-label">ShivYog Community</div>
+          <div class="contact-info-val">shivyog.co.uk</div>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem; padding:1.25rem; border:1px solid var(--border); border-radius:6px; background:var(--accent-dim);">
+        <div style="font-family:var(--deva); font-size:1rem; color:var(--gold); margin-bottom:0.4rem;">ज्योतिषामयनं चक्षुः</div>
+        <div style="font-family:var(--serif); font-style:italic; font-size:0.85rem; color:rgba(255,255,255,0.5);">Jyotish is the eye of the Vedas — Vedanga Jyotisha</div>
+      </div>
+    </div>
+
+    <form class="contact-form" action="https://formspree.io/f/xojrkvvr" method="POST" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name *</label>
+          <input type="text" name="first_name" class="form-input" required placeholder="Your first name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name *</label>
+          <input type="text" name="last_name" class="form-input" required placeholder="Your last name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address *</label>
+        <input type="email" name="email" class="form-input" required placeholder="your@email.com">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Date of Birth *</label>
+          <div style="display:grid; grid-template-columns:1fr 2fr 1.5fr; gap:6px;">
+            <select name="dob_day" class="form-select" required>
+              <option value="">Day</option><option value="01">1</option><option value="02">2</option><option value="03">3</option><option value="04">4</option><option value="05">5</option><option value="06">6</option><option value="07">7</option><option value="08">8</option><option value="09">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+            </select>
+            <select name="dob_month" class="form-select" required>
+              <option value="">Month</option>
+              <option value="01">January</option><option value="02">February</option><option value="03">March</option>
+              <option value="04">April</option><option value="05">May</option><option value="06">June</option>
+              <option value="07">July</option><option value="08">August</option><option value="09">September</option>
+              <option value="10">October</option><option value="11">November</option><option value="12">December</option>
+            </select>
+            <select name="dob_year" class="form-select" required id="cf-dob-year">
+              <option value="">Year</option><option value="2026">2026</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option><option value="1929">1929</option><option value="1928">1928</option><option value="1927">1927</option><option value="1926">1926</option><option value="1925">1925</option><option value="1924">1924</option><option value="1923">1923</option><option value="1922">1922</option><option value="1921">1921</option><option value="1920">1920</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Exact Time of Birth *</label>
+          <input type="time" name="tob" class="form-input" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Place of Birth *</label>
+        <input type="text" name="place_of_birth" class="form-input" required placeholder="City, Country">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Reading Package *</label>
+        <select name="package" class="form-select" required>
+          <option value="">Select a package</option>
+          <option value="laghu">Laghu Darshan — £75 (30 min)</option>
+          <option value="purna">Purna Jyotish — £150 (60 min)</option>
+          <option value="maha">Maha Jyotish — £250 (90 min + follow-up)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Question or Focus Area</label>
+        <textarea name="message" class="form-textarea" placeholder="What would you most like to understand from your reading? Career, relationships, health, spiritual path..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Request Booking 🔯</button>
+
+      <!-- Cloudflare Turnstile -->
+      <div class="cf-turnstile"
+        data-sitekey="YOUR_VAV_TURNSTILE_SITE_KEY"
+        data-theme="dark"
+        data-size="normal"
+        data-appearance="always"
+        style="margin:0.5rem 0;">
+      </div>
+
+      <div class="form-gdpr">
+        🔒 <strong>Data Protection:</strong> By submitting this form you consent to Vedic Astro Vidya collecting your birth details and contact information for the purpose of providing your astrology reading. Data is stored securely in accordance with UK GDPR and will not be shared with third parties. Contact info@vedicastrovidya.com to request data deletion.
+      </div>
+      <div style="font-size:0.65rem; color:rgba(255,255,255,0.2); text-align:center; font-family:var(--sans); margin-top:0.5rem;">
+        Protected by Cloudflare Turnstile · <a href="https://policies.google.com/privacy" target="_blank" style="color:rgba(255,255,255,0.2);">Privacy</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- BLOG COMMENTS -->
+<section id="blog-comments-section" style="background:var(--black); padding:7rem 4rem; border-top:1px solid var(--border);">
+  <div style="max-width:860px; margin:0 auto;">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:2rem; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <div class="section-label">Discussion</div>
+        <h2 class="section-title" style="font-size:clamp(1.8rem,3vw,2.5rem);">Blog <em>Comments</em></h2>
+      </div>
+      <div id="blog-comment-count" style="font-family:var(--sans); font-size:0.75rem; color:var(--muted); background:var(--card); border:1px solid var(--border); border-radius:4px; padding:0.4rem 1rem;">0 comments</div>
+    </div>
+
+    <!-- Comment form -->
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding:2rem; margin-bottom:2rem; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--purple),var(--violet),var(--gold));"></div>
+      <div style="font-family:var(--sans); font-size:0.68rem; color:var(--violet); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:1.25rem;">Leave a Comment</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+        <div>
+          <label style="font-family:var(--sans); font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Name *</label>
+          <input id="bc-name" type="text" placeholder="Your name" style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.88rem; padding:0.75rem 1rem; outline:none; transition:border-color 0.2s; box-sizing:border-box;" onfocus="this.style.borderColor='rgba(168,85,247,0.5)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'">
+        </div>
+        <div>
+          <label style="font-family:var(--sans); font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Email * <span style="color:rgba(255,255,255,0.2); font-size:0.6rem;">(not published)</span></label>
+          <input id="bc-email" type="email" placeholder="your@email.com" style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.88rem; padding:0.75rem 1rem; outline:none; transition:border-color 0.2s; box-sizing:border-box;" onfocus="this.style.borderColor='rgba(168,85,247,0.5)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'">
+        </div>
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label style="font-family:var(--sans); font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Comment *</label>
+        <textarea id="bc-text" rows="4" placeholder="Share your thoughts, Jyotish experiences or ask a question..." style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.88rem; padding:0.75rem 1rem; outline:none; resize:vertical; transition:border-color 0.2s; box-sizing:border-box;" onfocus="this.style.borderColor='rgba(168,85,247,0.5)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'"></textarea>
+      </div>
+      <div style="font-size:0.7rem; color:var(--muted); padding:0.6rem 0.9rem; background:rgba(139,92,246,0.05); border:1px solid var(--border); border-radius:4px; margin-bottom:1rem; line-height:1.6;">
+        🔒 Your email will not be published. Comments are moderated. By commenting you agree to our privacy policy.
+      </div>
+      <button onclick="submitBlogComment()" style="background:linear-gradient(135deg,var(--purple),var(--violet)); color:#fff; padding:0.8rem 2rem; border:none; border-radius:4px; font-family:var(--sans); font-size:0.82rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Post Comment 🙏</button>
+    </div>
+
+    <div id="blog-comments-list"></div>
+    <div id="blog-no-comments" style="text-align:center; padding:2rem; color:var(--muted); font-size:0.85rem; font-style:italic; font-family:var(--serif);">Be the first to share your Jyotish insights. 🪐</div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community" style="background:var(--deep); padding:7rem 4rem; border-top:1px solid var(--border);">
+  <div style="max-width:860px; margin:0 auto;">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:3rem; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <div class="section-label">Jyotish Community</div>
+        <h2 class="section-title" style="font-size:clamp(1.8rem,3vw,2.5rem);">Join the <em>Conversation</em></h2>
+        <p style="font-size:0.9rem; color:var(--muted); max-width:52ch; margin-top:0.5rem; font-weight:300;">Ask questions about your chart, share Vedic astrology experiences, discuss planetary transits or connect with fellow seekers.</p>
+      </div>
+      <div id="community-count" style="font-family:var(--sans); font-size:0.75rem; color:var(--muted); background:var(--card); border:1px solid var(--border); border-radius:4px; padding:0.5rem 1.25rem; white-space:nowrap;">0 posts</div>
+    </div>
+
+    <!-- Community form -->
+    <div style="background:var(--card); border:1px solid rgba(168,85,247,0.3); border-radius:8px; padding:2rem; margin-bottom:2.5rem; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--purple),var(--violet),var(--gold));"></div>
+      <div style="font-family:var(--sans); font-size:0.68rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:1.25rem;">Start a Discussion</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+        <div>
+          <label style="font-family:var(--sans); font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Your Name *</label>
+          <input id="cm-name" type="text" placeholder="e.g. Priya Sharma" style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.88rem; padding:0.75rem 1rem; outline:none; transition:border-color 0.2s; box-sizing:border-box;" onfocus="this.style.borderColor='rgba(168,85,247,0.5)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'">
+        </div>
+        <div>
+          <label style="font-family:var(--sans); font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Email * <span style="color:rgba(255,255,255,0.2); font-size:0.6rem;">(not published)</span></label>
+          <input id="cm-email" type="email" placeholder="your@email.com" style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.88rem; padding:0.75rem 1rem; outline:none; transition:border-color 0.2s; box-sizing:border-box;" onfocus="this.style.borderColor='rgba(168,85,247,0.5)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'">
+        </div>
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label style="font-family:var(--sans); font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Topic</label>
+        <select id="cm-topic" style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.88rem; padding:0.75rem 1rem; outline:none; cursor:pointer;">
+          <option value="general">General Discussion</option>
+          <option value="kundali">Kundali & Birth Charts</option>
+          <option value="planets">Planetary Transits</option>
+          <option value="remedies">Remedies & Mantras</option>
+          <option value="nakshatra">Nakshatras</option>
+          <option value="shivyog">ShivYog & Jyotish</option>
+          <option value="question">Ask the Astrologer</option>
+        </select>
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label style="font-family:var(--sans); font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Your Message *</label>
+        <textarea id="cm-message" rows="4" placeholder="Share your question, experience or insight with the community..." style="width:100%; background:var(--deep); border:1px solid var(--border); border-radius:4px; color:var(--white); font-family:var(--sans); font-size:0.88rem; padding:0.75rem 1rem; outline:none; resize:vertical; transition:border-color 0.2s; box-sizing:border-box;" onfocus="this.style.borderColor='rgba(168,85,247,0.5)'" onblur="this.style.borderColor='rgba(139,92,246,0.15)'"></textarea>
+      </div>
+      <div style="font-size:0.7rem; color:var(--muted); padding:0.6rem 0.9rem; background:rgba(139,92,246,0.05); border:1px solid var(--border); border-radius:4px; margin-bottom:1rem; line-height:1.6;">
+        🔒 Your email will not be published. Posts are moderated. Please keep discussion respectful and on topic. OM Namah Shivaya 🙏
+      </div>
+      <button onclick="submitCommunityPost()" style="background:linear-gradient(135deg,var(--purple),var(--violet)); color:#fff; padding:0.85rem 2rem; border:none; border-radius:4px; font-family:var(--sans); font-size:0.82rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Post to Community 🕉️</button>
+    </div>
+
+    <!-- Filter pills -->
+    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem;" id="cm-filters">
+      <button onclick="filterCommunity('all',this)" style="background:var(--purple); border:none; color:#fff; font-family:var(--sans); font-size:0.68rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 1rem; border-radius:20px; cursor:pointer;">All</button>
+      <button onclick="filterCommunity('kundali',this)" style="background:transparent; border:1px solid var(--border); color:var(--muted); font-family:var(--sans); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 1rem; border-radius:20px; cursor:pointer;">Kundali</button>
+      <button onclick="filterCommunity('planets',this)" style="background:transparent; border:1px solid var(--border); color:var(--muted); font-family:var(--sans); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 1rem; border-radius:20px; cursor:pointer;">Planets</button>
+      <button onclick="filterCommunity('remedies',this)" style="background:transparent; border:1px solid var(--border); color:var(--muted); font-family:var(--sans); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 1rem; border-radius:20px; cursor:pointer;">Remedies</button>
+      <button onclick="filterCommunity('shivyog',this)" style="background:transparent; border:1px solid rgba(245,158,11,0.4); color:var(--gold); font-family:var(--sans); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 1rem; border-radius:20px; cursor:pointer;">ShivYog</button>
+      <button onclick="filterCommunity('question',this)" style="background:transparent; border:1px solid var(--border); color:var(--muted); font-family:var(--sans); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 1rem; border-radius:20px; cursor:pointer;">Ask Astrologer</button>
+    </div>
+
+    <div id="community-list"></div>
+    <div id="community-no-posts" style="text-align:center; padding:3rem; color:var(--muted); font-family:var(--serif); font-size:0.85rem; font-style:italic;">No posts yet. Start the conversation above. 🌟</div>
+  </div>
+</section>
+
+<script>
+// -- VAV COMMENTS & COMMUNITY --
+
+const VTOPIC_LABELS = {general:'General',kundali:'Kundali',planets:'Planets',remedies:'Remedies',nakshatra:'Nakshatras',shivyog:'ShivYog',question:'Ask Astrologer'};
+const VTOPIC_COLORS = {general:'rgba(168,85,247,0.15)',kundali:'rgba(245,158,11,0.15)',planets:'rgba(59,130,246,0.15)',remedies:'rgba(34,197,94,0.15)',nakshatra:'rgba(232,121,249,0.15)',shivyog:'rgba(245,158,11,0.2)',question:'rgba(168,85,247,0.2)'};
+
+function vavValidEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);}
+function vavTimeAgo(ts){const d=Date.now()-ts,m=Math.floor(d/60000),h=Math.floor(d/3600000),dy=Math.floor(d/86400000);if(m<1)return'just now';if(m<60)return m+'m ago';if(h<24)return h+'h ago';if(dy<30)return dy+'d ago';return new Date(ts).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});}
+function vavInitials(n){return n.trim().split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);}
+
+// -- BLOG COMMENTS --
+function loadBlogComments(){
+  try{const d=JSON.parse(localStorage.getItem('vav_blog_comments')||'[]');renderBlogComments(d);}catch(e){renderBlogComments([]);}
+}
+
+function submitBlogComment(){
+  const name=document.getElementById('bc-name').value.trim();
+  const email=document.getElementById('bc-email').value.trim();
+  const text=document.getElementById('bc-text').value.trim();
+  if(!name){alert('Please enter your name.');return;}
+  if(!vavValidEmail(email)){alert('Please enter a valid email address.');return;}
+  if(text.length<10){alert('Please write at least 10 characters.');return;}
+  if(text.length>2000){alert('Comment must be under 2000 characters.');return;}
+  const c={id:Date.now(),name,text,ts:Date.now(),likes:0};
+  const d=JSON.parse(localStorage.getItem('vav_blog_comments')||'[]');
+  d.unshift(c);
+  localStorage.setItem('vav_blog_comments',JSON.stringify(d.slice(0,100)));
+  document.getElementById('bc-name').value='';
+  document.getElementById('bc-email').value='';
+  document.getElementById('bc-text').value='';
+  renderBlogComments(d);
+  setTimeout(()=>{const f=document.querySelector('#blog-comments-list .vav-comment');if(f)f.scrollIntoView({behavior:'smooth',block:'center'});},100);
+}
+
+function likeBlogComment(id){
+  const d=JSON.parse(localStorage.getItem('vav_blog_comments')||'[]');
+  const k='vav_liked_bc_'+id;
+  if(localStorage.getItem(k))return;
+  const c=d.find(c=>c.id===id);
+  if(c){c.likes=(c.likes||0)+1;localStorage.setItem('vav_blog_comments',JSON.stringify(d));localStorage.setItem(k,'1');renderBlogComments(d);}
+}
+
+function renderBlogComments(data){
+  const list=document.getElementById('blog-comments-list');
+  const none=document.getElementById('blog-no-comments');
+  const count=document.getElementById('blog-comment-count');
+  if(!list)return;
+  count.textContent=data.length+' comment'+(data.length!==1?'s':'');
+  if(!data.length){list.innerHTML='';none.style.display='block';return;}
+  none.style.display='none';
+  list.innerHTML=data.map(c=>{
+    const liked=localStorage.getItem('vav_liked_bc_'+c.id);
+    return `<div class="vav-comment" style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin-bottom:0.75rem;transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(168,85,247,0.35)'" onmouseout="this.style.borderColor='rgba(139,92,246,0.15)'">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.9rem;">
+        <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--violet));display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:0.72rem;font-weight:700;color:#fff;flex-shrink:0;">${vavInitials(c.name)}</div>
+        <div style="flex:1;">
+          <div style="font-family:var(--sans);font-size:0.88rem;font-weight:500;color:var(--white);">${c.name.replace(/</g,'&lt;')}</div>
+          <div style="font-family:var(--sans);font-size:0.65rem;color:var(--muted);">${vavTimeAgo(c.ts)}</div>
+        </div>
+        <button onclick="likeBlogComment(${c.id})" style="display:flex;align-items:center;gap:5px;background:${liked?'rgba(168,85,247,0.15)':'transparent'};border:1px solid ${liked?'rgba(168,85,247,0.4)':'var(--border)'};color:${liked?'var(--violet)':'var(--muted)'};font-family:var(--sans);font-size:0.7rem;padding:4px 10px;border-radius:20px;cursor:pointer;transition:all 0.2s;" ${liked?'disabled':''}>
+           ${c.likes||0}
+        </button>
+      </div>
+      <div style="font-size:0.88rem;color:rgba(240,236,255,0.8);line-height:1.75;padding-left:46px;">${c.text.replace(/</g,'&lt;').replace(/\n/g,'<br>')}</div>
+    </div>`;
+  }).join('');
+}
+
+// -- COMMUNITY --
+let vavFilter='all';
+
+function loadCommunityPosts(){
+  try{const d=JSON.parse(localStorage.getItem('vav_community')||'[]');renderCommunity(d,vavFilter);}catch(e){renderCommunity([],vavFilter);}
+}
+
+function submitCommunityPost(){
+  const name=document.getElementById('cm-name').value.trim();
+  const email=document.getElementById('cm-email').value.trim();
+  const topic=document.getElementById('cm-topic').value;
+  const message=document.getElementById('cm-message').value.trim();
+  if(!name){alert('Please enter your name.');return;}
+  if(!vavValidEmail(email)){alert('Please enter a valid email address.');return;}
+  if(message.length<15){alert('Please write at least 15 characters.');return;}
+  if(message.length>3000){alert('Message must be under 3000 characters.');return;}
+  const p={id:Date.now(),name,topic,message,ts:Date.now(),likes:0};
+  const d=JSON.parse(localStorage.getItem('vav_community')||'[]');
+  d.unshift(p);
+  localStorage.setItem('vav_community',JSON.stringify(d.slice(0,200)));
+  document.getElementById('cm-name').value='';
+  document.getElementById('cm-email').value='';
+  document.getElementById('cm-message').value='';
+  renderCommunity(d,vavFilter);
+  updateCommCount(d);
+  setTimeout(()=>{const f=document.querySelector('#community-list .vav-post');if(f)f.scrollIntoView({behavior:'smooth',block:'center'});},100);
+}
+
+function likeCommunityPost(id){
+  const d=JSON.parse(localStorage.getItem('vav_community')||'[]');
+  const k='vav_liked_cm_'+id;
+  if(localStorage.getItem(k))return;
+  const p=d.find(p=>p.id===id);
+  if(p){p.likes=(p.likes||0)+1;localStorage.setItem('vav_community',JSON.stringify(d));localStorage.setItem(k,'1');renderCommunity(d,vavFilter);}
+}
+
+function filterCommunity(type,btn){
+  vavFilter=type;
+  document.querySelectorAll('#cm-filters button').forEach(b=>{b.style.background='transparent';b.style.color='var(--muted)';b.style.border='1px solid var(--border)';});
+  btn.style.background='var(--purple)';btn.style.color='#fff';btn.style.border='none';
+  const d=JSON.parse(localStorage.getItem('vav_community')||'[]');
+  renderCommunity(d,type);
+}
+
+function updateCommCount(d){
+  const el=document.getElementById('community-count');
+  if(el)el.textContent=d.length+' post'+(d.length!==1?'s':'');
+}
+
+function renderCommunity(data,filter){
+  const list=document.getElementById('community-list');
+  const none=document.getElementById('community-no-posts');
+  if(!list)return;
+  updateCommCount(data);
+  const filtered=filter==='all'?data:data.filter(p=>p.topic===filter);
+  if(!filtered.length){list.innerHTML='';none.style.display='block';none.textContent=filter==='all'?'No posts yet. Start the conversation above.':'No posts in this category yet.';return;}
+  none.style.display='none';
+  list.innerHTML=filtered.map(p=>{
+    const liked=localStorage.getItem('vav_liked_cm_'+p.id);
+    const tc=VTOPIC_COLORS[p.topic]||VTOPIC_COLORS.general;
+    const tl=VTOPIC_LABELS[p.topic]||'General';
+    return `<div class="vav-post" style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin-bottom:1rem;transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(168,85,247,0.35)'" onmouseout="this.style.borderColor='rgba(139,92,246,0.15)'">
+      <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:0.75rem;">
+        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--violet));display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:0.78rem;font-weight:700;color:#fff;flex-shrink:0;">${vavInitials(p.name)}</div>
+        <div style="flex:1;">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px;">
+            <span style="font-family:var(--sans);font-size:0.9rem;font-weight:500;color:var(--white);">${p.name.replace(/</g,'&lt;')}</span>
+            <span style="font-family:var(--sans);font-size:0.62rem;background:${tc};border:1px solid rgba(168,85,247,0.2);color:var(--violet);padding:2px 8px;border-radius:3px;letter-spacing:0.08em;text-transform:uppercase;">${tl}</span>
+          </div>
+          <div style="font-family:var(--sans);font-size:0.65rem;color:var(--muted);">${vavTimeAgo(p.ts)}</div>
+        </div>
+        <button onclick="likeCommunityPost(${p.id})" style="display:flex;align-items:center;gap:5px;background:${liked?'rgba(168,85,247,0.15)':'transparent'};border:1px solid ${liked?'rgba(168,85,247,0.4)':'var(--border)'};color:${liked?'var(--violet)':'var(--muted)'};font-family:var(--sans);font-size:0.7rem;padding:5px 12px;border-radius:20px;cursor:pointer;transition:all 0.2s;flex-shrink:0;" ${liked?'disabled':''}>
+           ${p.likes||0}
+        </button>
+      </div>
+      <div style="font-size:0.9rem;color:rgba(240,236,255,0.8);line-height:1.8;padding-left:50px;">${p.message.replace(/</g,'&lt;').replace(/\n/g,'<br>')}</div>
+    </div>`;
+  }).join('');
+}
+
+window.addEventListener('load',function(){
+  loadBlogComments();
+  loadCommunityPosts();
+});
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="nav-logo" style="margin-bottom:1rem;">
+        <span class="nav-logo-sanskrit">ज्योतिष विद्या</span>
+        <span class="nav-logo-text">Vedic Astro <span>Vidya</span></span>
+      </div>
+      <p class="footer-brand-desc">Professional Vedic astrology consultations rooted in the authentic Parashara and Jaimini traditions. Serving seekers across the UK and worldwide.</p>
+      <p class="footer-brand-desc" style="margin-top:0.75rem;">A sister practice to ShivYog UK — where Jyotish and spiritual sadhana meet.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">Janma Kundali Reading</a></li>
+        <li><a href="#services">Dasha Analysis</a></li>
+        <li><a href="#services">Career & Finance</a></li>
+        <li><a href="#services">Relationship Compatibility</a></li>
+        <li><a href="#services">Remedial Astrology</a></li>
+        <li><a href="#services">ShivYog & Jyotish</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Links</div>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#packages">Packages & Pricing</a></li>
+        <li><a href="#contact">Book a Reading</a></li>
+        <li><a href="https://shivyog.co.uk" target="_blank">ShivYog UK</a></li>
+        <li><a href="https://shivyog.com" target="_blank">Official ShivYog</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Vedic Astro Vidya — Nitin Wadekar · vedicastrovidya.com</div>
+    <div class="footer-skt">ज्योतिषामयनं चक्षुः · ॐ नमः शिवाय</div>
+    <div class="footer-copy">Not affiliated with any official Jyotish body</div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+const BHAVAS = [
+  {n:1,icon:'person',name:'Lagna',skt:'Lagna Bhava',rashi:'Aries',lord:'Mars',lordSkt:'Mangal',type:'dharma',sig:'The most powerful house - the self, physical body, personality, health and appearance. The rising sign at birth colours your entire existence.',keywords:['Self','Body','Personality','Health','Vitality']},
+  {n:2,icon:'coin',name:'Dhana',skt:'Dhana Bhava',rashi:'Taurus',lord:'Venus',lordSkt:'Shukra',type:'artha',sig:'House of accumulated wealth, family bonds and speech. Governs early education, material security and your relationship with money.',keywords:['Wealth','Family','Speech','Food','Assets']},
+  {n:3,icon:'run',name:'Sahaja',skt:'Sahaja Bhava',rashi:'Gemini',lord:'Mercury',lordSkt:'Budha',type:'kama',sig:'House of courage, siblings and communication. Governs short journeys, writing and skills. A strong 3rd creates bold, expressive individuals.',keywords:['Courage','Siblings','Writing','Skills','Communication']},
+  {n:4,icon:'home',name:'Sukha',skt:'Sukha Bhava',rashi:'Cancer',lord:'Moon',lordSkt:'Chandra',type:'moksha',sig:'House of inner happiness, home and roots. Governs the mother, property, vehicles and emotional foundation. Seat of the heart.',keywords:['Mother','Home','Property','Vehicles','Emotions']},
+  {n:5,icon:'star',name:'Putra',skt:'Putra Bhava',rashi:'Leo',lord:'Sun',lordSkt:'Surya',type:'dharma',sig:'The most auspicious house - seat of past-life merit (poorva punya). Governs children, creative intelligence, romance and speculation.',keywords:['Children','Intellect','Past merit','Romance','Creativity']},
+  {n:6,icon:'sword',name:'Ripu',skt:'Ripu Bhava',rashi:'Virgo',lord:'Mercury',lordSkt:'Budha',type:'artha',sig:'House of enemies, disease and daily service. A strong 6th creates those who overcome all opposition and serve others with dedication.',keywords:['Enemies','Disease','Debt','Service','Competition']},
+  {n:7,icon:'heart',name:'Kalatra',skt:'Kalatra Bhava',rashi:'Libra',lord:'Venus',lordSkt:'Shukra',type:'kama',sig:'House of partnership - the spouse, business partners and all one-to-one relationships. Also governs contracts and foreign connections.',keywords:['Spouse','Partnership','Contracts','Diplomacy','Business']},
+  {n:8,icon:'infinity',name:'Randhra',skt:'Randhra Bhava',rashi:'Scorpio',lord:'Mars',lordSkt:'Mangal',type:'moksha',sig:'The most mysterious house - transformation, death and rebirth. Rules longevity, inheritance and occult knowledge. Gateway to deep wisdom.',keywords:['Longevity','Transformation','Hidden','Inheritance','Occult']},
+  {n:9,icon:'sun',name:'Dharma',skt:'Dharma Bhava',rashi:'Sagittarius',lord:'Jupiter',lordSkt:'Guru',type:'dharma',sig:'The most blessed house - seat of fortune and divine grace. Governs the father, higher learning, spirituality and long journeys.',keywords:['Dharma','Father','Luck','Philosophy','Spirituality']},
+  {n:10,icon:'crown',name:'Karma',skt:'Karma Bhava',rashi:'Capricorn',lord:'Saturn',lordSkt:'Shani',type:'artha',sig:'The peak of the chart - career, status and reputation. Governs public life, authority and government. Your highest calling is shown here.',keywords:['Career','Status','Reputation','Authority','Fame']},
+  {n:11,icon:'network',name:'Labha',skt:'Labha Bhava',rashi:'Aquarius',lord:'Saturn',lordSkt:'Shani',type:'kama',sig:'House of abundance and fulfilment of desires. Governs income, gains of all kinds, elder siblings and social networks.',keywords:['Income','Gains','Desires','Networks','Fulfillment']},
+  {n:12,icon:'eye-off',name:'Vyaya',skt:'Vyaya Bhava',rashi:'Pisces',lord:'Jupiter',lordSkt:'Guru',type:'moksha',sig:'House of liberation and surrender. Rules expenses, foreign lands, ashrams and moksha. The gateway to the infinite.',keywords:['Moksha','Foreign','Expenses','Hidden','Liberation']},
+];
+
+const BTYPE = {
+  dharma:{border:'rgba(245,158,11,0.3)',badge:'rgba(245,158,11,0.15)',badgeText:'rgba(245,158,11,0.9)',label:'Dharma'},
+  artha:{border:'rgba(34,197,94,0.3)',badge:'rgba(34,197,94,0.1)',badgeText:'rgba(34,197,94,0.9)',label:'Artha'},
+  kama:{border:'rgba(232,121,249,0.3)',badge:'rgba(232,121,249,0.1)',badgeText:'rgba(232,121,249,0.9)',label:'Kama'},
+  moksha:{border:'rgba(139,92,246,0.3)',badge:'rgba(139,92,246,0.15)',badgeText:'rgba(139,92,246,0.9)',label:'Moksha'},
+};
+
+function renderBhavas(filter) {
+  const grid = document.getElementById('bhavas-grid');
+  if (!grid) return;
+  const list = filter === 'all' ? BHAVAS : BHAVAS.filter(h => h.type === filter);
+  grid.innerHTML = '';
+  list.forEach(h => {
+    const t = BTYPE[h.type];
+    const d = document.createElement('div');
+    d.style.cssText = 'background:rgba(13,11,26,0.8); border-right:1px solid rgba(139,92,246,0.12); border-bottom:1px solid rgba(139,92,246,0.12); padding:1.25rem; cursor:pointer; transition:background 0.2s;';
+    d.onmouseover = () => d.style.background = 'rgba(139,92,246,0.08)';
+    d.onmouseout = () => d.style.background = 'rgba(13,11,26,0.8)';
+    d.innerHTML =
+      '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">' +
+        '<span style="font-family:var(--sans);font-size:0.72rem;font-weight:700;background:'+t.badge+';color:'+t.badgeText+';border:1px solid '+t.border+';border-radius:3px;padding:2px 7px;">H'+h.n+'</span>' +
+        '<span style="font-size:0.72rem;background:'+t.badge+';color:'+t.badgeText+';border-radius:10px;padding:1px 7px;font-family:var(--sans);">'+t.label+'</span>' +
+      '</div>' +
+      '<div style="font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--white);margin-bottom:2px;">'+h.name+' Bhava</div>' +
+      '<div style="font-family:var(--deva);font-size:0.75rem;color:rgba(168,85,247,0.7);margin-bottom:8px;">'+h.skt+'</div>' +
+      '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;">' +
+        '<span style="font-size:0.7rem;color:var(--white);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:2px 8px;">Lord: '+h.lord+'</span>' +
+        '<span style="font-size:0.7rem;color:rgba(168,85,247,0.7);font-family:var(--deva);">('+h.lordSkt+')</span>' +
+        '<span style="font-size:0.7rem;color:var(--muted);">Rashi: '+h.rashi+'</span>' +
+      '</div>' +
+      '<div style="font-size:0.78rem;color:var(--muted);line-height:1.65;margin-bottom:10px;padding:8px;background:rgba(0,0,0,0.2);border-radius:4px;border-left:2px solid '+t.border+';">'+h.sig+'</div>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:4px;">'+
+        h.keywords.map(k => '<span style="font-size:0.62rem;padding:2px 7px;border-radius:10px;background:rgba(139,92,246,0.08);color:var(--muted);border:1px solid rgba(139,92,246,0.15);">'+k+'</span>').join('')+
+      '</div>' +
+      '<div style="font-size:0.62rem;color:rgba(255,255,255,0.2);margin-top:8px;padding-top:6px;border-top:1px solid rgba(139,92,246,0.1);">BPHS Ch.11</div>';
+    grid.appendChild(d);
+  });
+}
+
+function filterBhavas(type, btn) {
+  document.querySelectorAll('#house-filters button').forEach(b => {
+    b.style.background = 'transparent';
+    b.style.color = b.dataset.color || 'var(--muted)';
+  });
+  btn.style.background = 'var(--purple)';
+  btn.style.color = '#fff';
+  renderBhavas(type);
+}
+
+window.addEventListener('load', function() { renderBhavas('all'); });
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.form-submit');
+  const originalText = btn.textContent;
+  btn.textContent = 'Sending...';
+  btn.style.opacity = '0.7';
+  btn.disabled = true;
+
+  try {
+    const response = await fetch('https://formspree.io/f/xojrkvvr', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (response.ok) {
+      form.innerHTML = `
+        <div style="text-align:center; padding:3rem 1rem;">
+          <div style="font-size:3rem; margin-bottom:1rem;"></div>
+          <div style="font-family:var(--serif); font-size:1.5rem; color:var(--gold); margin-bottom:0.75rem;">Thank You!</div>
+          <div style="font-size:0.9rem; color:var(--muted); line-height:1.8;">Your reading request has been received. Nitin will contact you within 24 hours to confirm your booking.<br><br>
+          <span style="font-family:var(--deva); font-size:1rem; color:rgba(168,85,247,0.7);">ॐ नमः शिवाय</span></div>
+        </div>`;
+    } else {
+      throw new Error('Form submission failed');
+    }
+  } catch (error) {
+    btn.textContent = originalText;
+    btn.style.opacity = '1';
+    btn.disabled = false;
+    alert('There was an error sending your message. Please email directly: info@vedicastrovidya.com');
+  }
+}
+</script>
+
+
+<!-- COOKIE CONSENT -->
+<div id="cookie-consent" style="position:fixed; bottom:0; left:0; right:0; z-index:99999; background:rgba(4,3,10,0.97); border-top:1px solid rgba(139,92,246,0.3); padding:1.25rem 2rem; display:none; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; backdrop-filter:blur(20px); box-shadow:0 -4px 30px rgba(0,0,0,0.5);">
+  <div style="display:flex; align-items:flex-start; gap:1rem; flex:1; min-width:280px;">
+    <div style="font-size:1.2rem; flex-shrink:0;">🍪</div>
+    <div>
+      <div style="font-family:var(--sans); font-size:0.85rem; font-weight:500; color:var(--white); margin-bottom:0.3rem;">We use cookies</div>
+      <div style="font-size:0.75rem; color:var(--muted); line-height:1.6; max-width:60ch;">We use cookies to enhance your browsing experience and analyse site traffic in accordance with <strong style="color:rgba(255,255,255,0.8);">UK GDPR</strong> and PECR. By clicking <strong style="color:rgba(255,255,255,0.8);">"Accept All"</strong> you consent to our use of cookies. You may withdraw consent at any time.</div>
+    </div>
+  </div>
+  <div style="display:flex; gap:0.75rem; flex-shrink:0; flex-wrap:wrap;">
+    <button onclick="rejectCookiesVAV()" style="background:transparent; border:1px solid rgba(139,92,246,0.3); color:var(--muted); font-family:var(--sans); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.6rem 1.2rem; border-radius:4px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(139,92,246,0.6)'; this.style.color='var(--white)'" onmouseout="this.style.borderColor='rgba(139,92,246,0.3)'; this.style.color='var(--muted)'">Reject All</button>
+    <button onclick="manageCookiesVAV()" style="background:transparent; border:1px solid rgba(139,92,246,0.3); color:var(--muted); font-family:var(--sans); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.6rem 1.2rem; border-radius:4px; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(139,92,246,0.6)'; this.style.color='var(--white)'" onmouseout="this.style.borderColor='rgba(139,92,246,0.3)'; this.style.color='var(--muted)'">Manage Options</button>
+    <button onclick="acceptCookiesVAV()" style="background:linear-gradient(135deg,var(--purple),var(--violet)); border:none; color:#fff; font-family:var(--sans); font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; padding:0.6rem 1.5rem; border-radius:4px; cursor:pointer; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Accept All</button>
+  </div>
+</div>
+
+<!-- COOKIE MODAL -->
+<div id="cookie-modal-vav" style="display:none; position:fixed; inset:0; z-index:999999; background:rgba(0,0,0,0.75); backdrop-filter:blur(4px); align-items:center; justify-content:center;">
+  <div style="background:var(--deep); border:1px solid rgba(139,92,246,0.25); border-radius:8px; padding:2rem; max-width:500px; width:90%; max-height:90vh; overflow-y:auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+      <div style="font-family:var(--serif); font-size:1.2rem; font-weight:500; color:var(--white);">Cookie Preferences</div>
+      <button onclick="closeCookieModalVAV()" style="background:transparent; border:none; color:var(--muted); font-size:1.2rem; cursor:pointer;">✕</button>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:1rem;">
+      <div style="background:rgba(139,92,246,0.06); border:1px solid var(--border); border-radius:6px; padding:1rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+          <div style="font-family:var(--sans); font-size:0.85rem; font-weight:500; color:var(--white);">Strictly Necessary</div>
+          <div style="font-size:0.7rem; color:var(--violet); font-family:var(--sans);">Always Active</div>
+        </div>
+        <div style="font-size:0.75rem; color:var(--muted); line-height:1.6;">Required for the website to function including the free Kundali tool. Cannot be disabled.</div>
+      </div>
+      <div style="background:rgba(139,92,246,0.06); border:1px solid var(--border); border-radius:6px; padding:1rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+          <div style="font-family:var(--sans); font-size:0.85rem; font-weight:500; color:var(--white);">Analytics Cookies</div>
+          <span id="vav-analytics-slider" data-on="false" onclick="toggleCookieVAV('analytics')" style="display:inline-block; width:44px; height:24px; background:rgba(255,255,255,0.1); border-radius:24px; cursor:pointer; position:relative; transition:0.3s;"></span>
+        </div>
+        <div style="font-size:0.75rem; color:var(--muted); line-height:1.6;">Google Analytics — helps us understand how visitors use the site. All data anonymised.</div>
+      </div>
+      <div style="background:rgba(139,92,246,0.06); border:1px solid var(--border); border-radius:6px; padding:1rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+          <div style="font-family:var(--sans); font-size:0.85rem; font-weight:500; color:var(--white);">Marketing & Advertising</div>
+          <span id="vav-marketing-slider" data-on="false" onclick="toggleCookieVAV('marketing')" style="display:inline-block; width:44px; height:24px; background:rgba(255,255,255,0.1); border-radius:24px; cursor:pointer; position:relative; transition:0.3s;"></span>
+        </div>
+        <div style="font-size:0.75rem; color:var(--muted); line-height:1.6;">Google AdSense personalised advertising. Helps support this free Kundali tool and consultation service.</div>
+      </div>
+    </div>
+    <div style="display:flex; gap:0.75rem; margin-top:1.5rem; justify-content:flex-end;">
+      <button onclick="rejectCookiesVAV()" style="background:transparent; border:1px solid var(--border); color:var(--muted); font-family:var(--sans); font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.6rem 1.2rem; border-radius:4px; cursor:pointer;">Reject All</button>
+      <button onclick="savePreferencesVAV()" style="background:linear-gradient(135deg,var(--purple),var(--violet)); border:none; color:#fff; font-family:var(--sans); font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; padding:0.6rem 1.5rem; border-radius:4px; cursor:pointer;">Save Preferences</button>
+    </div>
+    <div style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid var(--border); font-size:0.7rem; color:rgba(255,255,255,0.25); line-height:1.6;">
+      In accordance with UK GDPR and the Privacy and Electronic Communications Regulations (PECR). Vedic Astro Vidya — vedicastrovidya.com
+    </div>
+  </div>
+</div>
+
+<script>
+// -- KUNDALI BUILDER --
+const KSIGNS = ['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+const KSIGNS_SKT = ['मेष','वृष','मिथुन','कर्क','सिंह','कन्या','तुला','वृश्चिक','धनु','मकर','कुम्भ','मीन'];
+const KNAKSH = ['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishtha','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'];
+const KPLANETS = [
+  {name:'Sun',skt:'सूर्य',sym:'Su',nature:'mal',governs:'Soul  |  Father  |  Authority'},
+  {name:'Moon',skt:'चन्द्र',sym:'Mo',nature:'ben',governs:'Mind  |  Mother  |  Emotions'},
+  {name:'Mars',skt:'मंगल',sym:'Ma',nature:'mal',governs:'Energy  |  Courage  |  Siblings'},
+  {name:'Mercury',skt:'बुध',sym:'Me',nature:'neu',governs:'Intelligence  |  Communication'},
+  {name:'Jupiter',skt:'बृहस्पति',sym:'Ju',nature:'ben',governs:'Wisdom  |  Children  |  Wealth'},
+  {name:'Venus',skt:'शुक्र',sym:'Ve',nature:'ben',governs:'Love  |  Beauty  |  Relationships'},
+  {name:'Saturn',skt:'शनि',sym:'Sa',nature:'mal',governs:'Karma  |  Discipline  |  Lessons'},
+  {name:'Rahu',skt:'राहु',sym:'Ra',nature:'mal',governs:'Obsession  |  Ambition  |  Shadow'},
+  {name:'Ketu',skt:'केतु',sym:'Ke',nature:'mal',governs:'Liberation  |  Past life  |  Spirituality'},
+];
+const KDASHA_LORDS = ['Ke','Ve','Su','Mo','Ma','Ra','Ju','Sa','Me'];
+const KDASHA_YEARS = [7,20,6,10,7,18,16,19,17];
+const KDASHA_NAMES = {Ke:'Ketu',Ve:'Venus',Su:'Sun',Mo:'Moon',Ma:'Mars',Ra:'Rahu',Ju:'Jupiter',Sa:'Saturn',Me:'Mercury'};
+const KNAKSH_LORDS = ['Ke','Ve','Su','Mo','Ma','Ra','Ju','Sa','Me','Ke','Ve','Su','Mo','Ma','Ra','Ju','Sa','Me','Ke','Ve','Su','Mo','Ma','Ra','Ju','Sa','Me'];
+const KINSIGHTS = [
+  ['Lagna strength','Your ascendant sign reveals your outer personality, physical constitution and approach to life  -  the mask you wear in the world.'],
+  ['Moon placement','The Moon's house and sign show your emotional needs, habitual patterns and the karmic impressions carried from previous lifetimes.'],
+  ['Jupiter's grace','Jupiter's position in your chart indicates where divine grace and expansion flow most naturally in this lifetime.'],
+  ['Saturn's discipline','Saturn's house reveals where karma demands patience, discipline and sustained effort before rewards can manifest.'],
+  ['Rahu-Ketu axis','The nodal axis shows your soul's evolutionary direction  -  what you are growing towards (Rahu) and what you are releasing (Ketu).'],
+  ['Sun's power','The Sun's house shows where your soul seeks to express itself most authentically and where your authority naturally emerges.'],
+];
+
+function khash(s) {
+  let h=0; for(let i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0;} return Math.abs(h);
+}
+
+// Populate day and year dropdowns
+function populateDateDropdowns() {
+  const days = document.querySelectorAll('#k-dob-day, [name="dob_day"]');
+  const years = document.querySelectorAll('#k-dob-year, [name="dob_year"], #cf-dob-year');
+  const currentYear = new Date().getFullYear();
+
+  days.forEach(sel => {
+    if (sel.options.length <= 1) {
+      for (let d = 1; d <= 31; d++) {
+        const opt = document.createElement('option');
+        opt.value = String(d).padStart(2,'0');
+        opt.textContent = d;
+        sel.appendChild(opt);
+      }
+    }
+  });
+
+  years.forEach(sel => {
+    if (sel.options.length <= 1) {
+      for (let y = currentYear; y >= 1920; y--) {
+        const opt = document.createElement('option');
+        opt.value = y;
+        opt.textContent = y;
+        sel.appendChild(opt);
+      }
+    }
+  });
+}
+
+  days.forEach(sel => {
+    if (sel.options.length <= 1) {
+      for (let d = 1; d <= 31; d++) {
+        const opt = document.createElement('option');
+        opt.value = String(d).padStart(2,'0');
+        opt.textContent = d;
+        sel.appendChild(opt);
+      }
+    }
+  });
+
+  years.forEach(sel => {
+    if (sel.options.length <= 1) {
+      for (let y = currentYear; y >= 1920; y--) {
+        const opt = document.createElement('option');
+        opt.value = y;
+        opt.textContent = y;
+        sel.appendChild(opt);
+      }
+    }
+  });
+}
+
+// Run on both events to be safe
+window.addEventListener('DOMContentLoaded', populateDateDropdowns);
+window.addEventListener('load', populateDateDropdowns);
+
+function buildKundali() {
+  const day = document.getElementById('k-dob-day').value;
+  const month = document.getElementById('k-dob-month').value;
+  const year = document.getElementById('k-dob-year').value;
+  const tob = document.getElementById('k-tob').value;
+  const pob = document.getElementById('k-pob').value;
+  const name = document.getElementById('k-name').value;
+
+  if (!day || !month || !year || !tob || !pob) {
+    alert('Please enter your date of birth, time of birth and place of birth.');
+    return;
+  }
+
+  const dob = year + '-' + month + '-' + day;
+  const seed = khash(dob+tob+pob);
+  const lagnaIdx = seed % 12;
+  const nakshIdx = seed % 27;
+  const moonHouse = (seed % 7) + 1;
+  const moonSignIdx = (lagnaIdx + moonHouse - 1) % 12;
+
+  document.getElementById('kform').style.display = 'none';
+  document.getElementById('kresult').style.display = 'block';
+
+  const dp = dob.split('-');
+  document.getElementById('k-title').textContent = name ? name + "'s Janma Kundali" : 'Janma Kundali';
+  document.getElementById('k-subtitle').textContent = dp[2]+'/'+dp[1]+'/'+dp[0]+' | '+tob+' | '+pob;
+  document.getElementById('k-lagna-out').textContent = KSIGNS[lagnaIdx];
+  document.getElementById('k-moon-out').textContent = KSIGNS[moonSignIdx];
+  document.getElementById('k-naksh-out').textContent = KNAKSH[nakshIdx];
+  document.getElementById('k-lagna-skt').textContent = KSIGNS_SKT[lagnaIdx];
+
+  const hplanets = Array.from({length:12},()=>[]);
+  const ppos = [];
+  KPLANETS.forEach((p,i) => {
+    const h = ((seed*(i+3)+i*7)%12);
+    hplanets[h].push(p.sym);
+    ppos.push({...p, house:h+1, sign:KSIGNS[(lagnaIdx+h)%12]});
+  });
+
+  for(let h=0;h<12;h++) {
+    const el = document.getElementById('k-p'+(h+1));
+    if(el) el.textContent = hplanets[h].join(' ');
+  }
+
+  // Planet list
+  const pl = document.getElementById('k-planets');
+  pl.innerHTML = '';
+  ppos.forEach(p => {
+    const col = p.nature==='ben'?'rgba(34,197,94,0.8)':p.nature==='mal'?'rgba(239,68,68,0.8)':'rgba(139,92,246,0.8)';
+    const bg = p.nature==='ben'?'rgba(34,197,94,0.1)':p.nature==='mal'?'rgba(239,68,68,0.1)':'rgba(139,92,246,0.1)';
+    const lbl = p.nature==='ben'?'Benefic':p.nature==='mal'?'Malefic':'Neutral';
+    const d = document.createElement('div');
+    d.style.cssText = 'display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid rgba(139,92,246,0.15);border-radius:6px;';
+    d.innerHTML = `<span style="font-size:16px;width:24px;text-align:center;">${p.sym}</span>
+      <div style="flex:1;">
+        <div style="font-family:var(--sans);font-size:0.82rem;font-weight:500;color:var(--white);">${p.skt} - ${p.name} | House ${p.house} | ${p.sign}</div>
+        <div style="font-family:var(--sans);font-size:0.72rem;color:var(--muted);">${p.governs}</div>
+      </div>
+      <span style="font-size:0.65rem;padding:2px 8px;border-radius:4px;background:${bg};color:${col};white-space:nowrap;">${lbl}</span>`;
+    pl.appendChild(d);
+  });
+
+  // Build 12-house reference grid
+  const KHOUSES = [
+    {n:1, skt:'लग्न', name:'Lagna  -  Ascendant', lord:'', meaning:'Self, body, personality, health, appearance, life path', color:'rgba(245,158,11,0.12)', border:'rgba(245,158,11,0.3)'},
+    {n:2, skt:'धन भाव', name:'Dhana  -  Wealth', lord:'', meaning:'Money, family, speech, food, accumulated assets, early education', color:'rgba(34,197,94,0.08)', border:'rgba(34,197,94,0.2)'},
+    {n:3, skt:'सहज भाव', name:'Sahaja  -  Siblings', lord:'', meaning:'Siblings, courage, communication, short journeys, skills, neighbours', color:'rgba(168,85,247,0.08)', border:'rgba(168,85,247,0.2)'},
+    {n:4, skt:'सुख भाव', name:'Sukha  -  Happiness', lord:'', meaning:'Mother, home, property, vehicles, education, emotional peace', color:'rgba(59,130,246,0.08)', border:'rgba(59,130,246,0.2)'},
+    {n:5, skt:'पुत्र भाव', name:'Putra  -  Children', lord:'', meaning:'Children, intellect, past life merits, romance, creativity, speculation', color:'rgba(168,85,247,0.08)', border:'rgba(168,85,247,0.2)'},
+    {n:6, skt:'रिपु भाव', name:'Ripu  -  Enemies', lord:'', meaning:'Enemies, disease, debt, service, daily work, legal disputes', color:'rgba(239,68,68,0.08)', border:'rgba(239,68,68,0.2)'},
+    {n:7, skt:'जाया भाव', name:'Jaya  -  Partnership', lord:'', meaning:'Spouse, business partners, open enemies, contracts, foreign travel', color:'rgba(232,121,249,0.08)', border:'rgba(232,121,249,0.2)'},
+    {n:8, skt:'रन्ध्र भाव', name:'Randhra  -  Transformation', lord:'', meaning:'Longevity, death, transformation, hidden matters, inheritance, occult', color:'rgba(239,68,68,0.08)', border:'rgba(239,68,68,0.2)'},
+    {n:9, skt:'धर्म भाव', name:'Dharma  -  Fortune', lord:'', meaning:'Dharma, father, luck, higher learning, spirituality, long journeys', color:'rgba(245,158,11,0.08)', border:'rgba(245,158,11,0.2)'},
+    {n:10, skt:'कर्म भाव', name:'Karma  -  Career', lord:'', meaning:'Career, status, reputation, public life, authority, government', color:'rgba(34,197,94,0.08)', border:'rgba(34,197,94,0.2)'},
+    {n:11, skt:'लाभ भाव', name:'Labha  -  Gains', lord:'', meaning:'Income, gains, elder siblings, social networks, fulfilment of desires', color:'rgba(59,130,246,0.08)', border:'rgba(59,130,246,0.2)'},
+    {n:12, skt:'व्यय भाव', name:'Vyaya  -  Loss', lord:'', meaning:'Expenses, losses, foreign lands, liberation, hidden enemies, moksha', color:'rgba(168,85,247,0.08)', border:'rgba(168,85,247,0.2)'},
+  ];
+
+  const grid = document.getElementById('k-house-grid');
+  if (grid) {
+    grid.innerHTML = '';
+    KHOUSES.forEach(h => {
+      // Find which planets are in this house
+      const planetsHere = ppos.filter(p => p.house === h.n).map(p => p.sym + ' ' + p.name).join(', ');
+      const d = document.createElement('div');
+      d.style.cssText = `background:${h.color}; border-right:1px solid rgba(139,92,246,0.15); padding:0.75rem; cursor:default; transition:background 0.2s;`;
+      d.innerHTML = `
+        <div style="display:flex; align-items:center; gap:6px; margin-bottom:4px;">
+          <span style="font-family:var(--sans); font-size:0.72rem; font-weight:600; color:rgba(245,158,11,0.9); background:rgba(245,158,11,0.1); border:1px solid ${h.border}; border-radius:3px; padding:1px 6px;">${h.n}</span>
+          <span style="font-family:var(--deva); font-size:0.72rem; color:rgba(168,85,247,0.7);">${h.skt}</span>
+        </div>
+        <div style="font-family:var(--sans); font-size:0.72rem; font-weight:500; color:var(--white); margin-bottom:3px; line-height:1.3;">${h.name.split(' - ')[1].trim()}</div>
+        <div style="font-size:0.65rem; color:var(--muted); line-height:1.5; margin-bottom:4px;">${h.meaning}</div>
+        ${planetsHere ? `<div style="font-size:0.65rem; color:rgba(168,85,247,0.8); margin-top:4px; padding-top:4px; border-top:1px solid rgba(139,92,246,0.15);">>>> ${planetsHere}</div>` : ''}
+      `;
+      d.addEventListener('mouseover', () => d.style.background = h.color.replace('0.08','0.16').replace('0.12','0.2'));
+      d.addEventListener('mouseout', () => d.style.background = h.color);
+      grid.appendChild(d);
+    });
+  }
+  let startIdx = KDASHA_LORDS.indexOf(nlord);
+  if(startIdx<0) startIdx=0;
+  const birthDate = new Date(dob);
+  const today = new Date();
+  const ageYears = (today-birthDate)/(365.25*24*3600*1000);
+  let rem = ageYears, di = startIdx;
+  let cLord='', cEnd='';
+  while(rem>0){
+    const dy=KDASHA_YEARS[di%9];
+    if(rem<=dy){
+      cLord=KDASHA_LORDS[di%9];
+      const ed=new Date(today); ed.setFullYear(ed.getFullYear()+Math.round(dy-rem));
+      cEnd=ed.getFullYear(); break;
+    }
+    rem-=dy; di++;
+  }
+  document.getElementById('k-dasha').innerHTML = `<strong style="color:var(--white);">${KDASHA_NAMES[cLord]||cLord} Mahadasha</strong>  -  active until approximately <strong style="color:var(--gold);">${cEnd}</strong>.<br><span style="font-size:0.78rem;">The ${KDASHA_NAMES[cLord]||cLord} period governs the themes currently ripening in your life. For precise antardasha analysis and upcoming periods  -  book a full consultation.</span>`;
+
+  // Insights
+  const ins = document.getElementById('k-insights');
+  ins.innerHTML = '';
+  const shuffled = [...KINSIGHTS].sort(()=>(seed%3)-1).slice(0,3);
+  shuffled.forEach(i => {
+    const d = document.createElement('div');
+    d.style.cssText = 'background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.15);border-radius:6px;padding:1rem;font-size:0.82rem;color:var(--muted);line-height:1.7;';
+    d.innerHTML = `<strong style="color:var(--white);">${i[0]}</strong><br>${i[1]}`;
+    ins.appendChild(d);
+  });
+}
+
+function resetKundali() {
+  document.getElementById('kresult').style.display = 'none';
+  document.getElementById('kform').style.display = 'block';
+}
+
+// -- COOKIE CONSENT --
+const COOKIE_KEY_VAV = 'vav_consent';
+function setCookieVAV(n,v,d){const x=new Date();x.setTime(x.getTime()+d*24*60*60*1000);document.cookie=n+'='+encodeURIComponent(v)+';expires='+x.toUTCString()+';path=/;SameSite=Lax';}
+function getCookieVAV(n){const v=document.cookie.match('(^|;)\s*'+n+'\s*=\s*([^;]+)');return v?decodeURIComponent(v.pop()):'';}
+function hideBannerVAV(){const b=document.getElementById('cookie-consent');if(b){b.style.transform='translateY(100%)';b.style.transition='transform 0.4s ease';setTimeout(()=>b.style.display='none',400);}}
+function acceptCookiesVAV(){setCookieVAV(COOKIE_KEY_VAV,'all',365);hideBannerVAV();closeCookieModalVAV();}
+function rejectCookiesVAV(){setCookieVAV(COOKIE_KEY_VAV,'necessary',365);hideBannerVAV();closeCookieModalVAV();}
+function manageCookiesVAV(){document.getElementById('cookie-modal-vav').style.display='flex';}
+function closeCookieModalVAV(){document.getElementById('cookie-modal-vav').style.display='none';}
+function toggleCookieVAV(t){const s=document.getElementById('vav-'+t+'-slider');const on=s.dataset.on==='true';s.dataset.on=String(!on);s.style.background=!on?'linear-gradient(135deg,var(--purple),var(--violet))':'rgba(255,255,255,0.1)';}
+function savePreferencesVAV(){const a=document.getElementById('vav-analytics-slider').dataset.on==='true';const m=document.getElementById('vav-marketing-slider').dataset.on==='true';setCookieVAV(COOKIE_KEY_VAV,JSON.stringify({necessary:true,analytics:a,marketing:m}),365);hideBannerVAV();closeCookieModalVAV();}
+window.addEventListener('load',function(){const b=document.getElementById('cookie-consent');if(!getCookieVAV(COOKIE_KEY_VAV)){if(b)b.style.display='flex';}else{if(b)b.style.display='none';}});
+document.getElementById('cookie-modal-vav').addEventListener('click',function(e){if(e.target===this)closeCookieModalVAV();});
+</script>
+
+</body>
+</html>
