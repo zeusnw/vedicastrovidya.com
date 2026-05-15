@@ -1349,10 +1349,9 @@ footer {
   <div style="font-family:var(--sans); font-size:0.68rem; color:var(--gold); letter-spacing:0.15em; text-transform:uppercase; margin-bottom:1rem;">Recent Posts</div>
   <div id="blog-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-bottom:2rem;"></div>
 
-  <!-- Generate new post button -->
-  <div style="text-align:center;">
-    <button onclick="generateNewPost()" id="gen-btn" style="background:linear-gradient(135deg,var(--purple),var(--violet)); border:none; color:#fff; font-family:var(--sans); font-size:0.78rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; padding:0.85rem 2.5rem; border-radius:4px; cursor:pointer; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Generate New Post</button>
-    <p style="font-size:0.7rem; color:var(--muted); margin-top:0.75rem; font-style:italic;">Powered by Claude AI - Authentic Jyotish content generated fresh</p>
+  <!-- Generate new post — admin only, hidden from visitors -->
+  <div style="display:none;">
+    <button onclick="generateNewPost()" id="gen-btn">Generate New Post</button>
   </div>
 
   <!-- COMMENTS SECTION -->
